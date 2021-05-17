@@ -7,16 +7,22 @@ Options for player vs computer
 Other API:
 
 - weather background
+https://openweathermap.org/api
 
--music -
--spotify API
+-music 
+spotify API/youtubeAPI ?
 
 - Avatars
 https://robohash.org/
 https://avatars.dicebear.com/
 
 -adverts api
--e.g. football
+e.g. football
+
+helper chatbot api
+-https://talkjs.com/
+-https://www.twilio.com/docs/chat/rest
+
 
 Wireframing-
 designs
@@ -26,10 +32,9 @@ designs
 -color palette
 
 
-Underlying value: fun
-Look at existing solutions - good/bad
+Underlying value: fun and addictive
 
 TODO:
 1. Wireframe
 2. Color scheme
-3. Choose an API
+3. Choose an API or two
