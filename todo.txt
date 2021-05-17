@@ -1,0 +1,35 @@
+Games
+- blackjack with virtual currency
+
+Options for player vs computer
+- https://deckofcardsapi.com/
+
+Other API:
+
+- weather background
+
+-music -
+-spotify API
+
+- Avatars
+https://robohash.org/
+https://avatars.dicebear.com/
+
+-adverts api
+-e.g. football
+
+Wireframing-
+designs
+-add more money button
+-balance on top
+-add more to bet left
+-color palette
+
+
+Underlying value: fun
+Look at existing solutions - good/bad
+
+TODO:
+1. Wireframe
+2. Color scheme
+3. Choose an API
