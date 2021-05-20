@@ -7,7 +7,7 @@ Options for player vs computer
 Other API:
 
 - weather background
-https://openweathermap.org/api
+https://openweathermap.org/api -- SCRAP this. It already miserable out there.
 
 -music 
 spotify API/youtubeAPI ?
