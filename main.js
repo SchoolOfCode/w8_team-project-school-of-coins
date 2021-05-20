@@ -6,6 +6,7 @@ const playerScoreDisplayElem = document.querySelector("#player-score");
 const computerScoreDisplayElem = document.querySelector("#computer-score");
 const standBtn = document.querySelector("#stand");
 const resetBtn = document.querySelector("#reset");
+const outcomeDisplayElem = document.querySelector("#game-outcome");
 
 startGameBtn.addEventListener("click", startGame);
 drawCardBtn.addEventListener("click", function(){
@@ -53,7 +54,7 @@ class Player {
     }
     displayScore(){
         let parentDivElem = document.querySelector(`#${this.id}-score`);
-        parentDivElem.innerHTML = `<h2>${this.username}s score is: ${this.score}</h2>`;
+        parentDivElem.innerHTML = `<h2>${this.username}'s score is: ${this.score}</h2>`;
     }
     reset(){
         let parentImgDiv = document.querySelector(`#${this.id}-cards`);
@@ -118,6 +119,7 @@ async function stand(){
     while (computer.score < 17 && computer.hand.length <6){
         await drawCard(computer);
     }
+    let bonus = false;
     // See https://en.wikipedia.org/wiki/Blackjack#Rules
     /*
     If the player is dealt an Ace and a ten-value card (called a "blackjack" or "natural"), and the dealer does not, the player wins and usually receives a bonus.
@@ -127,15 +129,16 @@ async function stand(){
     If both dealer and player receive a blackjack or any other hands with the same sum, this will be called a "push" and no one wins.
    */
     if (user.softHand && user.cardNum === 2 && user.score ===21){
-        console.log("Blackjack! Natural. You get a bonus!!!");
+        outcomeDisplayElem.innerHTML = "<h2>Blackjack! Natural. You get a bonus!!!</h2>"
+        bonus = true;
     } else if(user.score > 21){
-        console.log("Bust!!!");
+        outcomeDisplayElem.innerHTML = "<h2>Bust!!!</h2>"
     } else if (computer.score > 21 && user.score <= 21){
-        console.log("You win!");
+        outcomeDisplayElem.innerHTML = "<h2>You win!</h2>"
     } else if(user.score > computer.score && user.score <= 21){
-        console.log("You win!");
+        outcomeDisplayElem.innerHTML = "<h2>You win!</h2>"
     } else{
-        console.log("It's a draw");
+        outcomeDisplayElem.innerHTML = "<h2>It's a draw</h2>"
     }
 }
 
