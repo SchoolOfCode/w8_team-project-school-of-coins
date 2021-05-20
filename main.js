@@ -66,6 +66,7 @@ class Player {
         this.score = 0;
         this.showHiddenCard = false;
         this.softHand=false;
+        this.cardNum=0;
     }
 }
 
