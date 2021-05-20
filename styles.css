@@ -28,8 +28,13 @@ button{
     position: absolute;
     top: 50%;
     left: 50%;
-    font-size: 50px;
-    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+    background-color: peachpuff;
+    border: black;
+    border-width: thick;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
 }

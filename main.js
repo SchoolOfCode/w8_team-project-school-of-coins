@@ -88,4 +88,15 @@ function stand(){
     drawCard(computer);
 }
 
+
+
+//Javascript needed to turn on and off the overlay effect
+function overlayOn(){
+    document.getElementById("overlay").style.display = "block";
+}
+
+function overlayOff(){
+    document.getElementById("overlay").style.display = "none";
+}
+//end of my function
 window.onload = getDecks();
