@@ -8,3 +8,15 @@ body{
 button{
     max-width: 100px;
 }
+
+/* Added the css design to the overlay, can be edited in the future just to make a template */
+
+#overlay{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
