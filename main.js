@@ -65,6 +65,7 @@ class Player {
     reset(){
         let parentImgDiv = document.querySelector(`#${this.id}-cards`);
         let parentScoreDiv = document.querySelector(`#${this.id}-score`);
+        outcomeDisplayElem.innerHTML = "";
         while (parentImgDiv.firstChild) {
             parentImgDiv.removeChild(parentImgDiv.lastChild);
         }
@@ -83,6 +84,7 @@ let fetchCardErrorCount = 0;
 const royals = ["KING", "JACK", "QUEEN"];
 let deckID = "vtq1bnblc5we"; 
 //to prevent creating a new deck every time during testing- set this to the deckID
+const TEMP_BET = 1000;
 
 async function getDecks(){
     const response = await fetch("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6");
@@ -123,18 +125,24 @@ async function stand(){
     // See https://en.wikipedia.org/wiki/Blackjack#Rules
     if (user.softHand && user.cardNum === 2 && user.score ===21){
         outcomeDisplayElem.innerHTML = "<h2>Blackjack! Natural. You get a bonus!!!</h2>";
+        user.balance += TEMP_BET * 2;
         bonus = true;
     } else if(user.score > 21){
         outcomeDisplayElem.innerHTML = "<h2>Bust!!!</h2>";
+        user.balance -= TEMP_BET;
     } else if (computer.score > 21 && user.score <= 21){
         outcomeDisplayElem.innerHTML = "<h2>You win!</h2>";
+        user.balance += TEMP_BET;
     } else if(user.score > computer.score && user.score <= 21){
         outcomeDisplayElem.innerHTML = "<h2>You win!</h2>";
+        user.balance += TEMP_BET;
     } else if (computer.score > user.score){
         outcomeDisplayElem.innerHTML = "<h2>Bust!!!</h2>";
+        user.balance -= TEMP_BET;
     } else {
         outcomeDisplayElem.innerHTML = "<h2>It's a draw</h2>";
     }
+    playerBalanceDisplay.innerText = `${user.username}'s balance is: ${user.balance}`;
 }
 
 function resetBoard(){
