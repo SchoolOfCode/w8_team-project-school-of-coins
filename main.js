@@ -12,7 +12,7 @@ async function newDeck(){
 const response = await fetch("https://deckofcardsapi.com/api/deck/new/draw/?count=2");
 newCard = await response.json();
 console.log(newCard)
-card.innerHTML = `${newCard.cards[0].code} + ${newCard.cards[1].code}`
+card.innerHTML = `${newCard.cards[0].code[0]} + ${newCard.cards[1].code[0]}`
 deckID = newCard.deck_id
 console.log(deckID)
     waitForDeckID = false;
@@ -22,7 +22,7 @@ newDeck();
 
 
 async function drawCard(){
-    const response = await fetch(`https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=2`)
+    const response = await fetch(`https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=1`)
     const drawCard = await response.json();
     console.log(drawCard);
 }
