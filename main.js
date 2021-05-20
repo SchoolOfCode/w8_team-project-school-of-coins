@@ -38,7 +38,7 @@ async function drawPlayerCard(){
     try{
         const response = await fetch(`https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=1`)
         const drawCard = await response.json();
-        let card = await displayPlayerCard(drawCard.cards[0]);
+        displayPlayerCard(drawCard.cards[0]);
         player["hand"].push(drawCard);
         console.log(drawCard)
         let cardVal = 0;
@@ -75,7 +75,7 @@ async function drawComputerCard(id=0){
     try{
         const response = await fetch(`https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=1`)
         const drawCard = await response.json();
-        let card = await displayComputerCard(drawCard.cards[0]);
+        displayComputerCard(drawCard.cards[0]);
         computer["hand"].push(drawCard);
         console.log(drawCard)
         let cardVal = 0;
