@@ -13,10 +13,11 @@ drawCardBtn.addEventListener("click", function(){
 standBtn.addEventListener("click", stand);
 
 class Player {
-    constructor(id="computer",username="The House", hand=[],score=0, balance=100000,showHiddenCard = false,cardNum=0){
+    constructor(id="computer",username="The House", hand=[],softHand=false,score=0, balance=100000,showHiddenCard = false,cardNum=0){
         this.id = id;
         this.username = username;
         this.hand = hand;
+        this.softHand = softHand;
         this.score = score;
         this.balance = balance;
         this.showHiddenCard = showHiddenCard;
@@ -26,8 +27,11 @@ class Player {
         if (royals.includes(card.value)){
             this.score += 10;
         } else if (card.value === "ACE"){
-            this.score += 11
-        } else this.score += parseInt(card.value);
+            this.score += 11;
+            this.softHand = true;
+        } else {
+            this.score += parseInt(card.value,10);
+        }
     }
     displayHand(player){
         let parentDivElem = document.querySelector(`#${this.id}-cards`);
@@ -53,39 +57,56 @@ class Player {
 
 let user = new Player("player","Emilio");
 let computer = new Player();
-
+let fetchCardErrorCount = 0;
 const royals = ["KING", "JACK", "QUEEN"];
-let deckID //= ""; 
+let deckID = "amkpqcyydwa0"; 
 //to prevent creating a new deck every time during testing- set this to the deckID
 
 async function getDecks(){
     const response = await fetch("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6");
     const newDecks = await response.json();
-    deckID = await newDecks.deck_id;
-    console.log(deckID)
+    // deckID = await newDecks.deck_id;
+    // console.log(deckID)
 }
 
 async function drawCard(player){
-    try{
-        const response = await fetch(`https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=1`)
-        const drawnCard = await response.json();
-        player["hand"].push(drawnCard);
-        player.updateScore(drawnCard.cards[0]);
-        player.displayHand(player);
-        player.displayScore();
-        player.cardNum++;
-    } catch {drawCard(player)};
+    const response = await fetch(`https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=1`)
+    if (response.status !== 200) {
+        fetchCardErrorCount++;
+        if (fetchCardErrorCount > 3) throw "Unable to get any cards!!";
+        drawCard(player);
+        console.error(response.status,fetchCardErrorCount,"Oops! Let's try that again!")
+    }
+    const drawnCard = await response.json();
+    player["hand"].push(drawnCard);
+    player.updateScore(drawnCard.cards[0]);
+    player.displayHand(player);
+    player.displayScore();
+    player.cardNum++;
+    fetchCardErrorCount = 0;
 }
 
 function startGame(){
     drawCard(computer);
     drawCard(user);
     drawCard(user);
+
 }
 
-function stand(){
+async function stand(){
     computer.showHiddenCard = true;
-    drawCard(computer);
+    await drawCard(computer);
+    for (let i=computer.hand.length; i<6; i++){
+        if (computer.score >= 16) break;
+        await drawCard(computer);
+        console.log(computer.score)
+    }
+    //The dealer then reveals the hidden card and must draw cards
+    //one by one, until the cards total up to 17 points. 
+    //At 17 points or higher the dealer must stop.
+
+
 }
+
 
 window.onload = getDecks();
