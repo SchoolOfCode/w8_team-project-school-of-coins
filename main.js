@@ -7,112 +7,85 @@ const computerScoreDisplayElem = document.querySelector("#computer-score");
 const standBtn = document.querySelector("#stand");
 
 startGameBtn.addEventListener("click", startGame);
-drawCardBtn.addEventListener("click", drawPlayerCard);
+drawCardBtn.addEventListener("click", function(){
+    drawCard(user);
+});
 standBtn.addEventListener("click", stand);
 
-const player = {
-    "id":"player",    
-    "username": "Emilio",
-    "hand":[],
-    "score":0,
-    "balance": 100000
-}
-const computer = {
-    "id":"player",    
-    "username": "Lewis",
-    "hand":[],
-    "score":0,
-    "balance": 100000
+class Player {
+    constructor(id="computer",username="The House", hand=[],score=0, balance=100000,showHiddenCard = false,cardNum=0){
+        this.id = id;
+        this.username = username;
+        this.hand = hand;
+        this.score = score;
+        this.balance = balance;
+        this.showHiddenCard = showHiddenCard;
+        this.cardNum = cardNum;
+    }
+    updateScore(card){
+        if (royals.includes(card.value)){
+            this.score += 10;
+        } else if (card.value === "ACE"){
+            this.score += 11
+        } else this.score += parseInt(card.value);
+    }
+    displayHand(player){
+        let parentDivElem = document.querySelector(`#${this.id}-cards`);
+        if (this.showHiddenCard){
+            let hiddenCard = document.querySelector("#hidden-card");
+            hiddenCard.style.display = "none";
+        }
+        let imgElem = document.createElement("img");
+        imgElem.src=player.hand[this.cardNum].cards[0].image;
+        parentDivElem.appendChild(imgElem);
+        if (this.id ==="computer" && this.showHiddenCard == false){
+            let hiddenCard = document.createElement("img");
+            hiddenCard.src = "images/back.png";
+            hiddenCard.id = "hidden-card";
+            parentDivElem.appendChild(hiddenCard);
+        }
+    }
+    displayScore(){
+        let parentDivElem = document.querySelector(`#${this.id}-score`);
+        parentDivElem.innerHTML = `<h2>${this.username}s score is: ${this.score}</h2>`;
+    }
 }
 
+let user = new Player("player","Emilio");
+let computer = new Player();
+
 const royals = ["KING", "JACK", "QUEEN"];
-let deckID;
+let deckID //= ""; 
+//to prevent creating a new deck every time during testing- set this to the deckID
 
 async function getDecks(){
     const response = await fetch("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6");
     const newDecks = await response.json();
     deckID = await newDecks.deck_id;
+    console.log(deckID)
 }
 
-async function drawPlayerCard(){
+async function drawCard(player){
     try{
         const response = await fetch(`https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=1`)
-        const drawCard = await response.json();
-        displayPlayerCard(drawCard.cards[0]);
-        player["hand"].push(drawCard);
-        console.log(drawCard)
-        let cardVal = 0;
-        if (royals.includes(drawCard.cards[0].value)){
-            cardVal += 10;
-        } else if (drawCard.cards[0].value === "ACE"){
-            cardVal += 11
-        } else cardVal += parseInt(drawCard.cards[0].value);
-        player["score"] += cardVal;
-        displayPlayerScore();
-        return drawCard.cards[0];
-    }
-    catch {drawPlayerCard()};
-}
-
-function displayPlayerCard(card){
-    const imgElem = document.createElement("img");
-    imgElem.src=card.image;
-    playerCardElem.appendChild(imgElem);
-}
-
-function displayPlayerScore(){
-    playerScoreDisplayElem.innerHTML = player.score;
+        const drawnCard = await response.json();
+        player["hand"].push(drawnCard);
+        player.updateScore(drawnCard.cards[0]);
+        player.displayHand(player);
+        player.displayScore();
+        player.cardNum++;
+    } catch {drawCard(player)};
 }
 
 function startGame(){
-    drawComputerCard();
-    drawPlayerCard();
-    drawPlayerCard();
-
-}
-
-async function drawComputerCard(id=0){
-    try{
-        const response = await fetch(`https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=1`)
-        const drawCard = await response.json();
-        displayComputerCard(drawCard.cards[0]);
-        computer["hand"].push(drawCard);
-        console.log(drawCard)
-        let cardVal = 0;
-        if (royals.includes(drawCard.cards[0].value)){
-            cardVal += 10;
-        } else if (drawCard.cards[0].value === "ACE"){
-            cardVal += 11
-        } else cardVal += parseInt(drawCard.cards[0].value);
-        computer["score"] += cardVal;
-
-        if (id == 0){
-            let hiddenCard = document.createElement("img");
-            hiddenCard.src = "images/back.jpg";
-            hiddenCard.id = "hidden-card";
-            computerCardElem.appendChild(hiddenCard)
-        }
-
-        displayComputerScore();
-        return drawCard.cards[0];
-    }
-    catch {drawComputerCard()};
-}
-
-function displayComputerCard(card){
-    const imgElem = document.createElement("img");
-    imgElem.src=card.image;
-    computerCardElem.appendChild(imgElem);
-}
-
-function displayComputerScore(){
-    computerScoreDisplayElem.innerHTML = computer.score;
+    drawCard(computer);
+    drawCard(user);
+    drawCard(user);
 }
 
 function stand(){
-    let hiddenCard = document.querySelector("#hidden-card");
-    hiddenCard.style.display = "none";
-    drawComputerCard(1);
+    computer.showHiddenCard = true;
+    drawCard(computer);
 }
 
 window.onload = getDecks();
