@@ -1,22 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
     <title>SOC Blackjack</title>
-</head>
-<body>
-    <h1>School of Coins: Blackjack</h1>
-    <div id="computer-cards"></div>
-    <div id="computer-score"></div>
-    <div id="player-cards"></div>
-    <div id="player-score"></div>
-    <button id="start-game">Start Game</button>
-    <button id="draw-card">Hit</button>
-    <button id="stand">Stand</button>
+  </head>
+  <body>
+    <section id="grid-wrapper">
+      <h1>School of Coins: Blackjack</h1>
+      <img src="/images/eemeelyo.jpg" alt="eemeelyo" class="avatar" />
+      <div id="player-name">eemeelyo</div>
+      <div id="balance">Balance: £500,000</div>
+      <div id="new-game">New Game</div>
+      <div id="help">?</div>
+      <div id="chips">
+        <div>100</div>
+        <div>500</div>
+        <div>1000</div>
+        <div>10k</div>
+        <div>50k</div>
+      </div>
+      <img src="/images/Jack-Black.jpg" alt="Jack-Black" id="computer-image" />
+      <div id="computer-cards" class="cards"></div>
+      <img src="/images/back.jpg" alt="deck" id="deck-cards" />
+      <!-- <div id="computer-score"></div> -->
+      <div id="player-cards" class="cards"></div>
+      <!-- <div id="player-score"></div> -->
+      <button id="start-game">Start Game</button>
+      <button id="draw-card">Hit</button>
+      <button id="stand">Stand</button>
+    </section>
 
     <script src="main.js"></script>
-</body>
+  </body>
 </html>

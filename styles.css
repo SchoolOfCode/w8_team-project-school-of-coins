@@ -1,14 +1,90 @@
-body{
-    display:grid;
-    grid-template-rows: repeat(autofill, minmax(1fr, 300px));
-    background: #1e4d0b;
-    
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: #1e4d0b;
+}
+.item1 {
+  grid-area: header;
+}
+.item2 {
+  grid-area: player-image;
+}
+.item3 {
+  grid-area: player-name;
+}
+.item4 {
+  grid-area: money-balance;
+}
+.item5 {
+  grid-area: game;
+}
+.item6 {
+  grid-area: help-buttn;
+}
+.item7 {
+  grid-area: chips-nested;
+}
+.item8 {
+  grid-area: comuter-image;
+}
+.item9 {
+  grid-area: computer-card;
+}
+.item10 {
+  grid-area: deck;
+}
+.item11 {
+  grid-area: player-card;
+}
+.item12 {
+  grid-area: split;
+}
+.item13 {
+  grid-area: card-double;
+}
+.item14 {
+  grid-area: stand;
+}
+.item15 {
+  grid-area: hit;
 }
 
-#hidden-card{
-    height: 325px;
+#grid-wrapper {
+  display: grid;
+  /* grid-template-rows: repeat(autofill, minmax(1fr, 300px)); */
+  grid-template-areas:
+    "header header header header header header header header header header header header header header header"
+    "player-image player-name money-balance money-balance money-balance game game help-button";
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+  margin: auto;
+  color: white;
+}
+h1 {
+  grid-column: 1/4;
 }
 
-button{
-    max-width: 100px;
+#hidden-card {
+  height: 70px;
+}
+.avatar {
+  width: 50px;
+  height: 50px;
+}
+#computer-image {
+  width: 50px;
+}
+#deck-cards {
+  width: 70px;
+}
+.cards {
+  width: 70px;
+}
+
+button {
+  max-width: 100px;
+  text-align: center;
+  width: 50%;
 }
