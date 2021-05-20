@@ -1,12 +1,18 @@
+const playerBalanceDisplay = document.querySelector("#player-balance");
+
 const playerCardElem = document.querySelector("#player-cards");
+const playerScoreDisplayElem = document.querySelector("#player-score");
+
 const computerCardElem = document.querySelector("#computer-cards");
+const computerScoreDisplayElem = document.querySelector("#computer-score");
+
+const outcomeDisplayElem = document.querySelector("#game-outcome");
+
 const startGameBtn = document.querySelector("#start-game");
 const drawCardBtn = document.querySelector("#draw-card");
-const playerScoreDisplayElem = document.querySelector("#player-score");
-const computerScoreDisplayElem = document.querySelector("#computer-score");
 const standBtn = document.querySelector("#stand");
 const resetBtn = document.querySelector("#reset");
-const outcomeDisplayElem = document.querySelector("#game-outcome");
+
 
 startGameBtn.addEventListener("click", startGame);
 drawCardBtn.addEventListener("click", function(){
@@ -16,13 +22,13 @@ standBtn.addEventListener("click", stand);
 resetBtn.addEventListener("click", resetBoard);
 
 class Player {
-    constructor(id="computer",username="The House", hand=[],softHand=false,score=0, balance=100000,showHiddenCard = false,cardNum=0){
+    constructor(id="computer",username="The House",balance=100000,hand=[],softHand=false,score=0,showHiddenCard=false,cardNum=0){
         this.id = id;
         this.username = username;
+        this.balance = balance;
         this.hand = hand;
         this.softHand = softHand;
         this.score = score;
-        this.balance = balance;
         this.showHiddenCard = showHiddenCard;
         this.cardNum = cardNum;
     }
@@ -71,18 +77,18 @@ class Player {
     }
 }
 
-let user = new Player("player","Emilio");
+let user = new Player("player","Emilio",5000);
 let computer = new Player();
 let fetchCardErrorCount = 0;
 const royals = ["KING", "JACK", "QUEEN"];
-let deckID //= "x8ezqo789qmx"; 
+let deckID = "vtq1bnblc5we"; 
 //to prevent creating a new deck every time during testing- set this to the deckID
 
 async function getDecks(){
     const response = await fetch("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6");
     const newDecks = await response.json();
-    deckID = await newDecks.deck_id;
-    console.log(deckID)
+    // deckID = await newDecks.deck_id;
+    // console.log(deckID)
 }
 
 async function drawCard(player){
@@ -99,18 +105,12 @@ async function drawCard(player){
     player.updateScore(drawnCard.cards[0]);
     if (player.softHand && player.score > 21 && player.score <= 31){
         player.score -= 10; //convert the ace from 11 to 1
-        console.log("removed")
+        player.softHand = false; //prevent it from always taking away 10 if an ace is in the hand
     }
     player.displayHand(player);
     player.displayScore();
     player.cardNum++;
     fetchCardErrorCount = 0;
-}
-
-function startGame(){
-    drawCard(computer);
-    drawCard(user);
-    drawCard(user);
 }
 
 async function stand(){
@@ -121,30 +121,33 @@ async function stand(){
     }
     let bonus = false;
     // See https://en.wikipedia.org/wiki/Blackjack#Rules
-    /*
-    If the player is dealt an Ace and a ten-value card (called a "blackjack" or "natural"), and the dealer does not, the player wins and usually receives a bonus.
-    If the player exceeds a sum of 21 ("busts"), the player loses, even if the dealer also exceeds 21.
-    If the dealer exceeds 21 ("busts") and the player does not, the player wins.
-    If the player attains a final sum higher than the dealer and does not bust, the player wins.
-    If both dealer and player receive a blackjack or any other hands with the same sum, this will be called a "push" and no one wins.
-   */
     if (user.softHand && user.cardNum === 2 && user.score ===21){
-        outcomeDisplayElem.innerHTML = "<h2>Blackjack! Natural. You get a bonus!!!</h2>"
+        outcomeDisplayElem.innerHTML = "<h2>Blackjack! Natural. You get a bonus!!!</h2>";
         bonus = true;
     } else if(user.score > 21){
-        outcomeDisplayElem.innerHTML = "<h2>Bust!!!</h2>"
+        outcomeDisplayElem.innerHTML = "<h2>Bust!!!</h2>";
     } else if (computer.score > 21 && user.score <= 21){
-        outcomeDisplayElem.innerHTML = "<h2>You win!</h2>"
+        outcomeDisplayElem.innerHTML = "<h2>You win!</h2>";
     } else if(user.score > computer.score && user.score <= 21){
-        outcomeDisplayElem.innerHTML = "<h2>You win!</h2>"
-    } else{
-        outcomeDisplayElem.innerHTML = "<h2>It's a draw</h2>"
+        outcomeDisplayElem.innerHTML = "<h2>You win!</h2>";
+    } else if (computer.score > user.score){
+        outcomeDisplayElem.innerHTML = "<h2>Bust!!!</h2>";
+    } else {
+        outcomeDisplayElem.innerHTML = "<h2>It's a draw</h2>";
     }
 }
 
 function resetBoard(){
     user.reset();
     computer.reset();
+}
+
+
+function startGame(){
+    playerBalanceDisplay.innerText = `${user.username}'s balance is: ${user.balance}`;
+    drawCard(computer);
+    drawCard(user);
+    drawCard(user);
 }
 
 window.onload = getDecks();
