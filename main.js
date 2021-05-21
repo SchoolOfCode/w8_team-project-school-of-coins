@@ -259,7 +259,7 @@ function resetBoard(computer,user){
     user.reset();
     computer.reset();
 }
-
+//
 async function startGame(){
     /*#################################################################
     Re-use the same deck unless there are less than 12ish cards remaining,
