@@ -6,7 +6,10 @@ const computerCardElem = document.querySelector("#computer-cards");
 const computerScoreDisplayElem = document.querySelector("#computer-score");
 const outcomeDisplayElem = document.querySelector("#game-outcome");
 const leaderBoardDisplayElem = document.querySelector("#leaderboard-display-container");
+const usernameAvatarContainerElem = document.querySelector(".username-avatar-container");
 
+const customiseAvatarBtn = document.querySelector("#customise-avatar");
+const submitUsernameBtn = document.querySelector("#submit-username");
 const startGameBtn = document.querySelector("#start-game");
 const drawCardBtn = document.querySelector("#draw-card");
 const standBtn = document.querySelector("#stand");
@@ -27,6 +30,7 @@ resetBtn.addEventListener("click", function(){
     resetBoard(blackjackPlayers.player("Dealer"),blackjackPlayers.player(username));
 });
 leaderBoardBtn.addEventListener("click", displayLeaderBoard);
+submitUsernameBtn.addEventListener("click",loadProfile);
 // Class Declerations #######################################################
 class Player {
 
@@ -35,10 +39,11 @@ class Player {
     or computer; they are for the house, you can override for any created users 
     on new class instantitation e.g. new Player(id="Jack",username="cryptoKing")
     #################################################################*/
-    constructor(id="computer",username="Dealer",balance=100000,hand=[],softHand=false,score=0,showHiddenCard=false,cardNum=0){
+    constructor(id="computer",username="Dealer",balance=100000,avatar=null,hand=[],softHand=false,score=0,showHiddenCard=false,cardNum=0){
         this.id = id;
         this.username = username;
         this.balance = balance;
+        this.avatar = avatar;
         this.hand = hand;
         this.softHand = softHand;
         this.score = score;
@@ -95,12 +100,12 @@ class Player {
     }
     reset(){
     /*#################################################################
-    Clear all images, clear the game outcome, clear the hand, score etc
+    Clear all card images, clear the game outcome, clear the hand, score etc
     #################################################################*/
         let parentImgDiv = document.querySelector(`#${this.id}-cards`);
         let parentScoreDiv = document.querySelector(`#${this.id}-score`);
         outcomeDisplayElem.innerHTML = "";
-        while (parentImgDiv.firstChild) {
+        while (parentImgDiv.childNodes.length > 1) {
             parentImgDiv.removeChild(parentImgDiv.lastChild);
         }
         parentScoreDiv.innerHTML="";
@@ -159,7 +164,7 @@ class Game {
 let blackjackPlayers = new Game();
 blackjackPlayers.setupDealer();
 
-// Create some default profiles for testing
+// Create some default profiles for testing - remove once testing is complete
 blackjackPlayers.loadPlayer("Jack");
 blackjackPlayers.player("Jack").balance = 1234;
 blackjackPlayers.loadPlayer("Lewis");
@@ -171,6 +176,7 @@ blackjackPlayers.player("Emilio").balance = 999999;
 const TEMP_BET = 1000;
 const ROYALS = ["KING", "JACK", "QUEEN"];
 const DECKS_TO_FETCH = 6;
+const playingButtons = [drawCardBtn,standBtn,resetBtn,leaderBoardBtn];
 
 let username;
 let remainingCardsInDeck = 0;
@@ -298,24 +304,90 @@ function displayLeaderBoard(){
 async function startGame(){
     /*#################################################################
     Re-use the same deck unless there are less than 12ish cards remaining,
-    otherwise get a new deck, just to be safe. Draw once for the computer,
-    twice for the user
+    otherwise get a new deck, just to be safe. Draw once for the computer, twice 
+    for the user. Once the user clicks start game, the other game buttons are revealed, 
+    and the cusomise button is removed. Load profile remains to allow switching.
     #################################################################*/
     if (remainingCardsInDeck <= 15){
         await getDecks();
     }
+    playingButtons.forEach(btn => btn.classList.remove("hidden"));
+    customiseAvatarBtn.classList.add("hidden");
 
-    username = usernameInputElement.value;
-    let user = blackjackPlayers.loadPlayer(username);
+    let user = blackjackPlayers.player(username);
     let computer = blackjackPlayers.player("Dealer");
 
-    playerBalanceDisplay.innerText = `${user.username}'s balance is: ${user.balance}`;
+    if (computer.avatar==null){
+        computer.avatar = await getAvatar(computer.username);
+        let computerProfileImgElem = document.createElement("img");
+        computerProfileImgElem.src = computer.avatar;
+        computerProfileImgElem.id = `${computer.id}-avatar`;
+        computerProfileImgElem.class= "avatar-picture";
+        computerCardElem.appendChild(computerProfileImgElem);
+    }
+
     drawCard(computer);
     drawCard(user);
     drawCard(user);
 }
 
-//Javascript needed to turn on and off the overlay effect
+// Profile Functions ######################################################
+
+const AVATAR_URL = "https://avatars.dicebear.com/api/bottts";
+const styleOptions = {
+    "colors": ["amber", "blue", "blueGrey", "brown", "cyan", "deepOrange", "deepPurple",
+    "green", "grey", "indigo", "lightBlue", "lightGreen", "lime", "orange", "pink", "purple",
+    "red", "teal", "yellow"],
+    "colorful":"false",//Use different colors for body parts
+    "primaryColorLevel":600, //Default 600. 50, 100, 200, 300, 400, 500, 600, 700, 800, 900
+    "secondaryColorLevel":400, //Default 400.50, 100, 200, 300, 400, 500, 600, 700, 800, 900
+    "textureChance": 50, //Texture Probability 0-100
+    "mouthChance": 100, //Mouth Probability 0-100
+    "sidesChance": 100, //Sides Probability 0-100
+    "topChance": 100    //Top Probability 0-100
+}
+async function loadProfile(){
+    /*#################################################################
+    Use this to load the profile, generate the avatar with the seed
+    Once the profile has been loaded, show the start game button
+    Reset the game board on clicking load profile
+    #################################################################*/
+    username = usernameInputElement.value;
+    let user = blackjackPlayers.loadPlayer(username);
+    let computer = blackjackPlayers.player("Dealer");
+
+    playerBalanceDisplay.innerHTML="";
+    let prevAvatarImage = document.querySelector("#player-avatar");
+    if (prevAvatarImage !== null){
+        playerCardElem.removeChild(prevAvatarImage);
+    }
+
+    resetBoard(computer,user);
+
+    customiseAvatarBtn.classList.remove("hidden");
+
+    let profileImg = document.createElement("img");
+    profileImg.src = await getAvatar(user.username);
+    profileImg.class = "avatar-picture";
+    user.avatar = profileImg.src;
+    if (user.avatar !== null){
+        profileImg.id = `${user.id}-avatar`;
+        playerCardElem.appendChild(profileImg);
+    }
+
+    playerBalanceDisplay.innerText = `${user.username}'s balance is: ${user.balance}`;
+    startGameBtn.classList.remove("hidden"); //display the start button if the profile is loaded sucessfully
+}
+
+async function getAvatar(seed=username,width=200,height=200,backgroundColor="transparent", styleFurther=false){
+    //Need to add some error catching here if avatar generation fails
+    //Need to add additional style options
+    let avatarParameters = `/:${seed}.svg?background=${backgroundColor}&width=${width}&height=${height}`;
+    const avatarSrc = await fetch(AVATAR_URL+avatarParameters);
+    return avatarSrc.url;
+}
+
+// Help Overlay Functions #################################################
 function overlayOn(){
     document.getElementById("overlay").style.display = "block";
 }

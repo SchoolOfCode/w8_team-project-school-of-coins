@@ -36,6 +36,17 @@ button{
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
 }
+.hidden{
+    display: none;
+}
+
+#player-profile-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
 /* img{
     max-width: 100%;
 } */
