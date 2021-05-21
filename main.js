@@ -22,8 +22,8 @@ resetBtn.addEventListener("click", resetBoard);
 class Player {
 
     /*#################################################################
-    Default values are applied when we don't supply any below when we make 
-    a new user or computer; are for the house, override for any created users 
+    Default values are applied when we don't supply any below, when we make a new user 
+    or computer; they are for the house, you can override for any created users 
     on new class instantitation e.g. new Player(id="Jack",username="cryptoKing")
     #################################################################*/
 
