@@ -94,12 +94,42 @@ body {
   justify-content: center;
 }
 
-button {
-  max-width: 100px;
+#overlay {
+  position: fixed; /*Sits on top of the page content*/
+  display: none; /*Hidden by default*/
+  width: 100%; /*Full width*/
+  height: 100%; /*Full height*/
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /*Black background with opacity*/
+  z-index: 2; /*Specify a stack order in case you're using a different order for other elements*/
+  cursor: pointer; /*Add a pointer on the hover*/
 }
 
-img {
-  max-width: 100%;
+#helpText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+  background-color: peachpuff;
+  border: black;
+  border-width: thick;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+/* img{
+    max-width: 100%;
+} */
+#hidden-card {
+  max-height: 315px;
+}
+h1 {
+  justify-self: center;
 }
 
 h1 {
