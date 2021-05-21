@@ -96,6 +96,7 @@ class Player {
     #################################################################*/
         let parentImgDiv = document.querySelector(`#${this.id}-cards`);
         let parentScoreDiv = document.querySelector(`#${this.id}-score`);
+        standBtn.disabled = false;
         outcomeDisplayElem.innerHTML = "";
         while (parentImgDiv.firstChild) {
             parentImgDiv.removeChild(parentImgDiv.lastChild);
@@ -106,6 +107,7 @@ class Player {
         this.showHiddenCard = false;
         this.softHand=false;
         this.cardNum=0;
+        startGameBtn.disabled = false;
     }
 }
 class Game {
@@ -223,8 +225,12 @@ async function stand(computer,user){
     for the computer. Keep drawing cards for the house, until we have a 
     maximum of 6 cards or the score exceeds 21. Then check the winning
     conditions and display the outcome and change in balance.
+    Adjustment to be made - when stand button pressed following winner 
+    decision, disable button until reset button or start game pressed
     #################################################################*/
     computer.showHiddenCard = true;
+    standBtn.disabled = true;
+    drawCardBtn.disabled = true;
     await drawCard(computer);
     while (computer.score < 17 && computer.cardNum <6){
         await drawCard(computer);
@@ -274,11 +280,13 @@ async function startGame(){
     let user;
     [user, playerIndex] = blackjackPlayers.loadPlayer(username);
     let computer = blackjackPlayers.players[0];
+    standBtn.disabled = false;
 
     playerBalanceDisplay.innerText = `${user.username}'s balance is: ${user.balance}`;
     drawCard(computer);
     drawCard(user);
     drawCard(user);
+    startGameBtn.disabled = true;
 }
 
 //Javascript needed to turn on and off the overlay effect
