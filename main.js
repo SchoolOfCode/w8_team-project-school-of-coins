@@ -156,4 +156,17 @@ function startGame(){
     drawCard(user);
 }
 
+function stand(){
+    computer.showHiddenCard = true;
+    drawCard(computer);
+}
+
+//Javascript needed to turn on and off the overlay effect
+function overlayOn(){
+    document.getElementById("overlay").style.display = "block";
+}
+
+function overlayOff(){
+    document.getElementById("overlay").style.display = "none";
+}
 window.onload = getDecks();
