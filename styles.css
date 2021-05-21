@@ -181,3 +181,29 @@ h1{
     transform: translateY(4px);
 }
 
+#tenThousandChip{
+    display: block;
+    width: 2em;
+    height: 2em;
+    font-size: 2em;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background: black;
+    border: 10px dashed white;
+    border-radius: 6em;
+    padding-top: 6em/2 - 1em;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    margin: 2em auto;
+}
+#tenThousandChip:hover{
+    background-color: black;
+}
+#tenThousandChip:active{
+    background-color: black;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
