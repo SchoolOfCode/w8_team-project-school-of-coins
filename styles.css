@@ -154,3 +154,30 @@ h1{
     box-shadow: 0 5px #666;
     transform: translateY(4px);
 }
+
+#thousandChip{
+    display: block;
+    width: 2em;
+    height: 2em;
+    font-size: 2em;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background: orange;
+    border: 10px dashed white;
+    border-radius: 6em;
+    padding-top: 6em/2 - 1em;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    margin: 2em auto;
+}
+#thousandChip:hover{
+    background-color: darkorange;
+}
+#thousandChip:active{
+    background-color: darkorange;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
