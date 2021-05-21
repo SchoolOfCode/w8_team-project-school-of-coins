@@ -109,9 +109,8 @@ h1{
     height: 2em;
     font-size: 2em;
     font-weight: 700;
-    letter-spacing: .1em;
     text-transform: uppercase;
-    text-align:justify
+    text-align:justify;
     text-decoration: none;
     color: white;
     background: blue;
@@ -130,3 +129,28 @@ h1{
     transform: translateY(4px);
 }
 
+#hundredChip{
+    display: block;
+    width: 2em;
+    height: 2em;
+    font-size: 2em;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background: green;
+    border: 10px dashed white;
+    border-radius: 6em;
+    padding-top: 6em/2 - 1em;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    margin: 2em auto;
+}
+#hundredChip:hover{
+    background-color: darkgreen;
+}
+#hundredChip:active{
+    background-color: darkgreen;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
