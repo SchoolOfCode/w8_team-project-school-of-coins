@@ -1,15 +1,13 @@
 body{
     display:grid;
-    grid-template-rows: repeat(autofill, minmax(1fr, 300px));
-    background: #2e7214;
-    
+    grid-auto-flow: row;
+    justify-content: center;
 }
 
 button{
     max-width: 100px;
 }
 
-/* Added the css design to the overlay, can be edited in the future just to make a template */
 #overlay{
     position: fixed; /*Sits on top of the page content*/
     display: none; /*Hidden by default*/
@@ -37,4 +35,36 @@ button{
     border-width: thick;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
+}
+img{
+    max-width: 100%;
+}
+
+h1{
+    justify-self: center;
+}
+
+#player-balance-container{
+    display: grid;
+    justify-content: center;
+}
+
+#computer-cards{
+    display: grid;
+    grid-auto-flow: column;
+}
+#computer-score{
+    justify-self: center;
+}
+
+.player-controls{
+    justify-self: center;
+}
+
+#player-cards{
+    display: grid;
+    grid-auto-flow: column;
+}
+#player-score{
+    justify-self: center;
 }

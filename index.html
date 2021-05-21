@@ -9,12 +9,22 @@
 </head>
 <body>
     <h1>School of Coins: Blackjack</h1>
+    <div id="player-balance-container">
+        <h2 id ="player-balance"></h2>
+    </div>
     <div id="computer-cards"></div>
     <div id="computer-score"></div>
     <div id="player-cards"></div>
     <div id="player-score"></div>
-    
-<!--Created the overlay and added text inside of the overlay for the instructions -->
+    <div id="game-outcome"></div>
+    <div class="player-controls">
+        <button id="start-game">Start Game</button>
+        <button id="draw-card">Hit</button>
+        <button id="stand">Stand</button>
+        <button id="reset">Reset</button>
+        <button id="Help-button" onclick="overlayOn()">Help</button>
+    </div>
+  <!--Created the overlay and added text inside of the overlay for the instructions -->
     <div id="overlay" onclick="overlayOff()">
         <div id="helpText">
             <p>The Rules:</p>
@@ -30,14 +40,6 @@
             <p>Good Luck and have fun!</p>
         </div>
     </div>
-
-    <button id="start-game">Start Game</button>
-    <button id="draw-card">Hit</button>
-    <button id="stand">Stand</button>
-    <!--Button added that calls the function when clicked-->
-    <button id="Help-button" onclick="overlayOn()">Help</button>
-
-
-    <script src="main.js"></script>
+<script src="main.js"></script>   
 </body>
 </html>
