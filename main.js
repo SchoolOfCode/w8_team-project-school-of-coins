@@ -5,20 +5,26 @@ const playerScoreDisplayElem = document.querySelector("#player-score");
 const computerCardElem = document.querySelector("#computer-cards");
 const computerScoreDisplayElem = document.querySelector("#computer-score");
 const outcomeDisplayElem = document.querySelector("#game-outcome");
+
 const startGameBtn = document.querySelector("#start-game");
 const drawCardBtn = document.querySelector("#draw-card");
 const standBtn = document.querySelector("#stand");
 const resetBtn = document.querySelector("#reset");
 
+const usernameInputElement = document.querySelector("#username");
+
 // Event Handlers #######################################################
 startGameBtn.addEventListener("click", startGame);
 drawCardBtn.addEventListener("click", function(){
-    drawCard(user);
+    drawCard(blackjackPlayers.players[playerIndex]);
 });
-standBtn.addEventListener("click", stand);
-resetBtn.addEventListener("click", resetBoard);
-
-// Class Decleration #######################################################
+standBtn.addEventListener("click", function(){
+    stand(blackjackPlayers.players[0],blackjackPlayers.players[playerIndex]);
+});
+resetBtn.addEventListener("click", function(){
+    resetBoard(blackjackPlayers.players[0],blackjackPlayers.players[playerIndex]);
+});
+// Class Declerations #######################################################
 class Player {
 
     /*#################################################################
@@ -26,8 +32,7 @@ class Player {
     or computer; they are for the house, you can override for any created users 
     on new class instantitation e.g. new Player(id="Jack",username="cryptoKing")
     #################################################################*/
-
-    constructor(id="computer",username="The House",balance=100000,hand=[],softHand=false,score=0,showHiddenCard=false,cardNum=0){
+    constructor(id="computer",username="Dealer",balance=100000,hand=[],softHand=false,score=0,showHiddenCard=false,cardNum=0){
         this.id = id;
         this.username = username;
         this.balance = balance;
@@ -103,11 +108,51 @@ class Player {
         this.cardNum=0;
     }
 }
-
+class Game {
+    /*#################################################################
+    Create a game container to locally store the players, balance, avatars etc
+    Also will be used to make a local leaderboard
+    #################################################################*/
+    constructor(){
+        this.players = [];
+        this.leaders = [];
+    }
+    setupDealer(balance){
+        let computer = new Player("computer","Dealer",balance);
+        this.players.push(computer)
+    }
+    loadPlayer(username){
+    /*#################################################################
+    Check if the username exists in the array of players, if not, create a 
+    new player,If the player does exist, retrieve the playerObj
+    #################################################################*/
+        let currentPlayer;
+        let playerObjIndexInArray;
+        if (this.checkPlayerExists(username)){
+            currentPlayer = this.players.find(player => player.username === username);
+            playerObjIndexInArray = this.players.findIndex(player => player.username === username)
+        } else{
+            currentPlayer = this.newPlayer(username);
+            playerObjIndexInArray = this.players.length -1;
+        }
+        return [currentPlayer, playerObjIndexInArray];
+    }
+    checkPlayerExists(username){
+        return this.players.some(player => player.username === username);//true or false
+    }
+    newPlayer(username){
+        let currentPlayer = new Player("player",username,5000);
+        this.players.push(currentPlayer);
+        return currentPlayer;
+    }
+}
 // Class Instantiation #####################################################
-let user = new Player("player","Emilio",5000);
-let computer = new Player();
-
+let blackjackPlayers = new Game();
+blackjackPlayers.setupDealer();
+blackjackPlayers.loadPlayer("Jack");
+blackjackPlayers.loadPlayer("Lewis");
+blackjackPlayers.loadPlayer("Emilio");
+let playerIndex;
 // Global Variables #######################################################
 const TEMP_BET = 1000;
 const ROYALS = ["KING", "JACK", "QUEEN"];
@@ -116,7 +161,6 @@ const DECKS_TO_FETCH = 6;
 let remainingCardsInDeck = 0;
 let deckID;
 let fetchCardErrorCount = 0;
-
 
 // Functions #############################################################
 
@@ -173,7 +217,7 @@ async function drawCard(playerObj){
     remainingCardsInDeck--;
 }
 
-async function stand(){
+async function stand(computer,user){
     /*#################################################################
     Hide the hidden card overlay (the back of the card), and draw another card 
     for the computer. Keep drawing cards for the house, until we have a 
@@ -205,9 +249,10 @@ async function stand(){
         outcomeDisplayElem.i nnerHTML = "<h2>It's a draw</h2>";
     }
     playerBalanceDisplay.innerText = `${user.username}'s balance is: ${user.balance}`;
+    console.log(blackjackPlayers);
 }
 
-function resetBoard(){
+function resetBoard(computer,user){
     /*#################################################################
     clear the screen and reset everything apart from the balance
     #################################################################*/
@@ -224,6 +269,12 @@ async function startGame(){
     if (remainingCardsInDeck <= 15){
         await getDecks();
     }
+
+    let username = usernameInputElement.value;
+    let user;
+    [user, playerIndex] = blackjackPlayers.loadPlayer(username);
+    let computer = blackjackPlayers.players[0];
+
     playerBalanceDisplay.innerText = `${user.username}'s balance is: ${user.balance}`;
     drawCard(computer);
     drawCard(user);
