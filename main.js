@@ -24,6 +24,12 @@ standBtn.addEventListener("click", function(){
 resetBtn.addEventListener("click", function(){
     resetBoard(blackjackPlayers.players[0],blackjackPlayers.players[playerIndex]);
 });
+
+// Button original states ########################################################
+drawCardBtn.disabled = true;
+    startGameBtn.disabled = false;
+    standBtn.disabled = true;
+    
 // Class Declerations #######################################################
 class Player {
 
@@ -96,7 +102,6 @@ class Player {
     #################################################################*/
         let parentImgDiv = document.querySelector(`#${this.id}-cards`);
         let parentScoreDiv = document.querySelector(`#${this.id}-score`);
-        standBtn.disabled = false;
         outcomeDisplayElem.innerHTML = "";
         while (parentImgDiv.firstChild) {
             parentImgDiv.removeChild(parentImgDiv.lastChild);
@@ -107,7 +112,6 @@ class Player {
         this.showHiddenCard = false;
         this.softHand=false;
         this.cardNum=0;
-        startGameBtn.disabled = false;
     }
 }
 class Game {
@@ -264,6 +268,9 @@ function resetBoard(computer,user){
     #################################################################*/
     user.reset();
     computer.reset();
+    drawCardBtn.disabled = true;
+    startGameBtn.disabled = false;
+    standBtn.disabled = true;
 }
 
 async function startGame(){
@@ -287,6 +294,7 @@ async function startGame(){
     drawCard(user);
     drawCard(user);
     startGameBtn.disabled = true;
+    drawCardBtn.disabled = false;
 }
 
 //Javascript needed to turn on and off the overlay effect
