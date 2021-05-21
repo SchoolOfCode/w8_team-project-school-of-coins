@@ -53,7 +53,7 @@ class Player {
         parentDivElem.appendChild(imgElem);
         if (this.id ==="computer" && this.showHiddenCard == false){
             let hiddenCard = document.createElement("img");
-            hiddenCard.src = "images/back.png";
+            hiddenCard.src = "images/SOC-back.png";
             hiddenCard.id = "hidden-card";
             parentDivElem.appendChild(hiddenCard);
         }
