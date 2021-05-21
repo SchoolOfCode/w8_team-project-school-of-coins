@@ -143,7 +143,7 @@ async function stand(){
     }
     playerBalanceDisplay.innerText = `${user.username}'s balance is: ${user.balance}`;
 }
-
+//
 function resetBoard(){
     user.reset();
     computer.reset();
