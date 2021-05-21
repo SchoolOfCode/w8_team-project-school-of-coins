@@ -5,25 +5,28 @@ const playerScoreDisplayElem = document.querySelector("#player-score");
 const computerCardElem = document.querySelector("#computer-cards");
 const computerScoreDisplayElem = document.querySelector("#computer-score");
 const outcomeDisplayElem = document.querySelector("#game-outcome");
+const leaderBoardDisplayElem = document.querySelector("#leaderboard-display-container");
 
 const startGameBtn = document.querySelector("#start-game");
 const drawCardBtn = document.querySelector("#draw-card");
 const standBtn = document.querySelector("#stand");
 const resetBtn = document.querySelector("#reset");
+const leaderBoardBtn = document.querySelector("#leaderboard");
 
 const usernameInputElement = document.querySelector("#username");
 
 // Event Handlers #######################################################
 startGameBtn.addEventListener("click", startGame);
 drawCardBtn.addEventListener("click", function(){
-    drawCard(blackjackPlayers.players[playerIndex]);
+    drawCard(blackjackPlayers.player(username));
 });
 standBtn.addEventListener("click", function(){
-    stand(blackjackPlayers.players[0],blackjackPlayers.players[playerIndex]);
+    stand(blackjackPlayers.player("Dealer"),blackjackPlayers.player(username));
 });
 resetBtn.addEventListener("click", function(){
-    resetBoard(blackjackPlayers.players[0],blackjackPlayers.players[playerIndex]);
+    resetBoard(blackjackPlayers.player("Dealer"),blackjackPlayers.player(username));
 });
+leaderBoardBtn.addEventListener("click", displayLeaderBoard);
 // Class Declerations #######################################################
 class Player {
 
@@ -118,8 +121,7 @@ class Game {
         this.leaders = [];
     }
     setupDealer(balance){
-        let computer = new Player("computer","Dealer",balance);
-        this.players.push(computer)
+        this.players.push(new Player("computer","Dealer",balance));
     }
     loadPlayer(username){
     /*#################################################################
@@ -127,42 +129,55 @@ class Game {
     new player,If the player does exist, retrieve the playerObj
     #################################################################*/
         let currentPlayer;
-        let playerObjIndexInArray;
         if (this.checkPlayerExists(username)){
-            currentPlayer = this.players.find(player => player.username === username);
-            playerObjIndexInArray = this.players.findIndex(player => player.username === username)
+            currentPlayer = this.player(username);
         } else{
-            currentPlayer = this.newPlayer(username);
-            playerObjIndexInArray = this.players.length -1;
+            currentPlayer = this.createPlayer(username);
         }
-        return [currentPlayer, playerObjIndexInArray];
+        return currentPlayer;
     }
     checkPlayerExists(username){
         return this.players.some(player => player.username === username);//true or false
     }
-    newPlayer(username){
-        let currentPlayer = new Player("player",username,5000);
-        this.players.push(currentPlayer);
-        return currentPlayer;
+    createPlayer(username){
+        let newPlayer = new Player("player",username,5000);
+        this.players.push(newPlayer);
+        return newPlayer;
+    }
+    player(username){
+        return this.players.find(player => player.username === username);
+    }
+    generateLeaderBoard(){
+        this.leaders = [];
+        for (let i = 1; i <this.players.length; i++){
+            this.leaders.push([this.players[i].username, this.players[i].balance]);
+        }
+        return this.leaders.sort((a,b)=> b[1]-a[1]);
     }
 }
 // Class Instantiation #####################################################
 let blackjackPlayers = new Game();
 blackjackPlayers.setupDealer();
+
+// Create some default profiles for testing
 blackjackPlayers.loadPlayer("Jack");
+blackjackPlayers.player("Jack").balance = 1234;
 blackjackPlayers.loadPlayer("Lewis");
+blackjackPlayers.player("Lewis").balance = 5678;
 blackjackPlayers.loadPlayer("Emilio");
-let playerIndex;
+blackjackPlayers.player("Emilio").balance = 999999;
+
 // Global Variables #######################################################
 const TEMP_BET = 1000;
 const ROYALS = ["KING", "JACK", "QUEEN"];
 const DECKS_TO_FETCH = 6;
 
+let username;
 let remainingCardsInDeck = 0;
 let deckID;
 let fetchCardErrorCount = 0;
 
-// Functions #############################################################
+// BlackJack Functions ####################################################
 
 async function getDecks(){
     /*#################################################################
@@ -259,7 +274,27 @@ function resetBoard(computer,user){
     user.reset();
     computer.reset();
 }
-//
+
+function displayLeaderBoard(){
+    /*#################################################################
+    Clear the leaderboard if it already exists, otherwise generate a 
+    leaderboard with the highest balance first, add it to an unordered list
+    TODO: make this on overlay? Can disappear on clicking
+    #################################################################*/
+    while (leaderBoardDisplayElem.hasChildNodes()) {
+        leaderBoardDisplayElem.removeChild(leaderBoardDisplayElem.lastChild);
+    }
+    let leaderBoard = blackjackPlayers.generateLeaderBoard();
+    let olElem = document.createElement("ol");
+    leaderBoardDisplayElem.appendChild(olElem);
+
+    leaderBoard.forEach(player => {
+        let liElem = document.createElement("li");
+        liElem.innerText = `${player[0]} with ${player[1]}`;
+        olElem.appendChild(liElem);
+    });
+}
+
 async function startGame(){
     /*#################################################################
     Re-use the same deck unless there are less than 12ish cards remaining,
@@ -270,10 +305,9 @@ async function startGame(){
         await getDecks();
     }
 
-    let username = usernameInputElement.value;
-    let user;
-    [user, playerIndex] = blackjackPlayers.loadPlayer(username);
-    let computer = blackjackPlayers.players[0];
+    username = usernameInputElement.value;
+    let user = blackjackPlayers.loadPlayer(username);
+    let computer = blackjackPlayers.player("Dealer");
 
     playerBalanceDisplay.innerText = `${user.username}'s balance is: ${user.balance}`;
     drawCard(computer);
