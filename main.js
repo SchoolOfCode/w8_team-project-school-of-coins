@@ -80,17 +80,18 @@ class Player {
 
 let user = new Player("player","Emilio",5000);
 let computer = new Player();
+
 let fetchCardErrorCount = 0;
 const royals = ["KING", "JACK", "QUEEN"];
-let deckID = "vtq1bnblc5we"; 
+let deckID //= "vtq1bnblc5we"; 
 //to prevent creating a new deck every time during testing- set this to the deckID
 const TEMP_BET = 1000;
 
 async function getDecks(){
     const response = await fetch("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6");
     const newDecks = await response.json();
-    // deckID = await newDecks.deck_id;
-    // console.log(deckID)
+    deckID = await newDecks.deck_id;
+    console.log(deckID)
 }
 
 async function drawCard(player){
@@ -121,12 +122,10 @@ async function stand(){
     while (computer.score < 17 && computer.hand.length <6){
         await drawCard(computer);
     }
-    let bonus = false;
     // See https://en.wikipedia.org/wiki/Blackjack#Rules
     if (user.softHand && user.cardNum === 2 && user.score ===21){
         outcomeDisplayElem.innerHTML = "<h2>Blackjack! Natural. You get a bonus!!!</h2>";
-        user.balance += TEMP_BET * 2;
-        bonus = true;
+        user.balance += TEMP_BET + TEMP_BET*0.5;
     } else if(user.score > 21){
         outcomeDisplayElem.innerHTML = "<h2>Bust!!!</h2>";
         user.balance -= TEMP_BET;
@@ -149,7 +148,6 @@ function resetBoard(){
     user.reset();
     computer.reset();
 }
-
 
 function startGame(){
     playerBalanceDisplay.innerText = `${user.username}'s balance is: ${user.balance}`;
