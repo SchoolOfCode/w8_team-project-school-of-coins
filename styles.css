@@ -88,3 +88,45 @@ button {
   text-align: center;
   width: 50%;
 }
+body {
+  display: grid;
+  grid-auto-flow: row;
+  justify-content: center;
+}
+
+button {
+  max-width: 100px;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1 {
+  justify-self: center;
+}
+
+#player-balance-container {
+  display: grid;
+  justify-content: center;
+}
+
+#computer-cards {
+  display: grid;
+  grid-auto-flow: column;
+}
+#computer-score {
+  justify-self: center;
+}
+
+.player-controls {
+  justify-self: center;
+}
+
+#player-cards {
+  display: grid;
+  grid-auto-flow: column;
+}
+#player-score {
+  justify-self: center;
+}
