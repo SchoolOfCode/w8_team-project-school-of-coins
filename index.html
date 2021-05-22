@@ -9,32 +9,32 @@
 </head>
 <body>
     <h1>School of Coins: Blackjack</h1>
-    <div class = "username-container">
+    <div class = "username-avatar-container">
         <form onsubmit="return false">
             <label for="username">Username:</label>
             <input type="text" id="username" maxlength="20" aria-label="username input" value="Emilio" autofocus>
+            <button id="submit-username">Load Profile</button>
+            <button id="customise-avatar" class="hidden">Customise</button>
         </form>
     </div>
-    <div id="player-balance-container">
-        <h2 id ="player-balance"></h2>
-    </div>
 
-    <!--class for the chips-->
-   
-
-    
     <div id="computer-cards"></div>
     <div id="computer-score"></div>
     <div id="player-cards"></div>
     <div id="player-score"></div>
+    <div id="player-balance-container">
+        <h2 id ="player-balance"></h2>
+    </div>
     <div id="game-outcome"></div>
     <div class="player-controls">
-        <button id="start-game">Start Game</button>
-        <button id="draw-card">Hit</button>
-        <button id="stand">Stand</button>
-        <button id="reset">Reset</button>
-        <button id="Help-button" onclick="overlayOn()">Help</button>
+        <button id="start-game"class="hidden">Start</button>
+        <button id="draw-card" class="hidden">Hit</button>
+        <button id="stand"class="hidden">Stand</button>
+        <button id="reset"class="hidden">Reset</button>
+        <button id="leaderboard"class="hidden">Leaderboard</button>
+        <button id="Help-button" class="hidden" onclick="overlayOn()">Help</button>
     </div>
+    <div id="leaderboard-display-container"></div>
   <!--Created the overlay and added text inside of the overlay for the instructions -->
     <div id="overlay" onclick="overlayOff()">
         <div id="helpText">
@@ -51,6 +51,7 @@
             <p>Good Luck and have fun!</p>
         </div>
     </div>
+  <!--class for the chips-->
     <div class="pokerChips">
         <button id="oneChip"><span id="oneButton">1</span></button>
         <button id="tenChip">10</button>
