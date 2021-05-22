@@ -15,6 +15,7 @@ const drawCardBtn = document.querySelector("#draw-card");
 const standBtn = document.querySelector("#stand");
 const resetBtn = document.querySelector("#reset");
 const leaderBoardBtn = document.querySelector("#leaderboard");
+const helpBtn = document.querySelector("#help-button");
 
 const usernameInputElement = document.querySelector("#username");
 
@@ -324,7 +325,7 @@ async function startGame(){
     }
     playingButtons.forEach(btn => btn.classList.remove("hidden"));
     customiseAvatarBtn.classList.add("hidden");
-
+    helpBtn.classList.remove("hidden");
     let user = blackjackPlayers.player(username);
     let computer = blackjackPlayers.player("Dealer");
 
@@ -336,9 +337,9 @@ async function startGame(){
         computerProfileImgElem.class= "avatar-picture";
         computerCardElem.appendChild(computerProfileImgElem);
     }
-   standBtn.disabled = false;
-   startGameBtn.disabled = true;
-   drawCardBtn.disabled = false;
+    standBtn.disabled = false;
+    startGameBtn.disabled = true;
+    drawCardBtn.disabled = false;
     drawCard(computer);
     drawCard(user);
     drawCard(user);
