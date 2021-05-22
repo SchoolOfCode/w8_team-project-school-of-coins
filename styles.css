@@ -76,6 +76,11 @@ h1{
     display: block;
 }
 
+#oneButton{
+    font-size: 30px;
+    text-align: center;
+}
+
 #oneChip{
     display: block;
     width: 2em;
