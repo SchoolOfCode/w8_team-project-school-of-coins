@@ -18,9 +18,16 @@
             <button id="customise-avatar" class="hidden">Customise</button>
         </form>
     </div>
-
+    <!--class for the chips-->
+    <div class="pokerChips">
+        <button id="oneChip"><span id="oneButton">1</span></button>
+        <button id="tenChip"><span id="tenButton">10</span></button>
+        <button id="hundredChip"><span id="hundredButton">100</span></button>
+        <button id="thousandChip"><span id="thousandButton">1K</span></button>
+        <button id="tenThousandChip"><span id="tenThousandButton">10K</span></button>
+    </div>
     <div id="computer-cards"></div>
-    <div id="computer-score"></div>
+    <div id="computer-score" class="hidden"></div>
     <div id="player-cards"></div>
     <div id="player-score"></div>
     <div id="player-balance-container">
@@ -36,7 +43,7 @@
         <button id="help-button" class="hidden" onclick="overlayOn()">Help</button>
     </div>
     <div id="leaderboard-display-container"></div>
-  <!--Created the overlay and added text inside of the overlay for the instructions -->
+<!--Created the overlay and added text inside of the overlay for the instructions -->
     <div id="overlay" onclick="overlayOff()">
         <div id="helpText">
             <p>The Rules:</p>
@@ -51,14 +58,6 @@
             </ol>
             <p>Good Luck and have fun!</p>
         </div>
-    </div>
-  <!--class for the chips-->
-    <div class="pokerChips">
-        <button id="oneChip"><span id="oneButton">1</span></button>
-        <button id="tenChip"><span id="tenButton">10</span></button>
-        <button id="hundredChip"><span id="hundredButton">100</span></button>
-        <button id="thousandChip"><span id="thousandButton">1K</span></button>
-        <button id="tenThousandChip"><span id="tenThousandButton">10K</span></button>
     </div>
 <script src="main.js"></script>   
 </body>

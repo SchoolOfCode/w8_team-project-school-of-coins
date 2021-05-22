@@ -7,6 +7,7 @@ const computerScoreDisplayElem = document.querySelector("#computer-score");
 const outcomeDisplayElem = document.querySelector("#game-outcome");
 const leaderBoardDisplayElem = document.querySelector("#leaderboard-display-container");
 const usernameAvatarContainerElem = document.querySelector(".username-avatar-container");
+const chipBlockDivElem = document.querySelector(".pokerChips");
 
 const customiseAvatarBtn = document.querySelector("#customise-avatar");
 const submitUsernameBtn = document.querySelector("#submit-username");
@@ -44,7 +45,7 @@ class Player {
     or computer; they are for the house, you can override for any created users 
     on new class instantitation e.g. new Player(id="Jack",username="cryptoKing")
     #################################################################*/
-    constructor(id="computer",username="Dealer",balance=100000,avatar=null,hand=[],softHand=false,score=0,showHiddenCard=false,cardNum=0){
+    constructor(id="computer",username="Dealer",balance=100000,avatar=null,hand=[],softHand=false,score=0,showHiddenCard=false,cardNum=0,bet=0){
         this.id = id;
         this.username = username;
         this.balance = balance;
@@ -54,6 +55,7 @@ class Player {
         this.score = score;
         this.showHiddenCard = showHiddenCard;
         this.cardNum = cardNum;
+        this.bet = bet;
     }
 
     updateScore(card){
@@ -326,6 +328,11 @@ async function startGame(){
     playingButtons.forEach(btn => btn.classList.remove("hidden"));
     customiseAvatarBtn.classList.add("hidden");
     helpBtn.classList.remove("hidden");
+    standBtn.disabled = false;
+    startGameBtn.disabled = true;
+    drawCardBtn.disabled = false;
+    chipBlockDivElem.style.display="block";
+
     let user = blackjackPlayers.player(username);
     let computer = blackjackPlayers.player("Dealer");
 
@@ -337,9 +344,7 @@ async function startGame(){
         computerProfileImgElem.class= "avatar-picture";
         computerCardElem.appendChild(computerProfileImgElem);
     }
-    standBtn.disabled = false;
-    startGameBtn.disabled = true;
-    drawCardBtn.disabled = false;
+
     drawCard(computer);
     drawCard(user);
     drawCard(user);
