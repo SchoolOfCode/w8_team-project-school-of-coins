@@ -16,6 +16,9 @@ button{
 h1{
     justify-self: center;
 }
+#pokerChips{
+    grid-column: 2;
+}
 /*-------------Help Overlay-----------------*/
 #overlay{
     position: fixed; /*Sits on top of the page content*/
