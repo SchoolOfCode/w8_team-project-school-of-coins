@@ -1,6 +1,5 @@
 // DOM Selectors #######################################################
 const playerBalanceDisplay = document.querySelector("#player-balance-container");
-const playerBalanceAmount = document.querySelector("#current-balance");
 const playerCardElem = document.querySelector("#player-cards");
 const playerScoreDisplayElem = document.querySelector("#player-score");
 const computerCardElem = document.querySelector("#computer-cards");
@@ -30,36 +29,6 @@ const hundredChipBtn = document.querySelector("#hundredChip");
 const thousandChipBtn = document.querySelector("#thousandChip");
 const tenThousandChipBtn = document.querySelector("#tenThousandChip");
 
-// oneChipBtn.addEventListener("click", ()=>{
-//     checkBet();
-//     blackjackPlayers.player(username).bet += 1;
-//     blackjackPlayers.player(username).balance -= 1;
-//     betAmountElem.innerHTML = blackjackPlayers.player(username).bet;
-// });
-tenChipBtn.addEventListener("click", ()=>{
-    checkBet();
-    blackjackPlayers.player(username).bet += 10;
-    blackjackPlayers.player(username).balance -= 1;
-    betAmountElem.innerHTML = blackjackPlayers.player(username).bet;
-});
-hundredChipBtn.addEventListener("click", ()=>{
-    checkBet();
-    blackjackPlayers.player(username).bet += 100;
-    blackjackPlayers.player(username).balance -= 100;
-    betAmountElem.innerHTML = blackjackPlayers.player(username).bet;
-});
-thousandChipBtn.addEventListener("click", ()=>{
-    checkBet();
-    blackjackPlayers.player(username).bet += 1000;
-    blackjackPlayers.player(username).balance -= 1000;
-    betAmountElem.innerHTML = blackjackPlayers.player(username).bet;
-});
-tenThousandChipBtn.addEventListener("click", ()=>{
-    checkBet();
-    blackjackPlayers.player(username).bet += 10000;
-    blackjackPlayers.player(username).balance -= 10000;
-    betAmountElem.innerHTML = blackjackPlayers.player(username).bet;
-});
 // Event Handlers #######################################################
 startGameBtn.addEventListener("click", startGame);
 drawCardBtn.addEventListener("click", function(){
@@ -226,7 +195,13 @@ const TEMP_BET = 1000;
 const ROYALS = ["KING", "JACK", "QUEEN"];
 const DECKS_TO_FETCH = 6;
 const playingButtons = [drawCardBtn,standBtn,resetBtn,leaderBoardBtn];
-
+const pokerChips = {
+    1: oneChipBtn,
+    10: tenChipBtn,
+    100: hundredChipBtn,
+    1000: thousandChipBtn,
+    10000: tenThousandChipBtn
+}
 let username;
 let remainingCardsInDeck = 0;
 let deckID;
@@ -356,23 +331,17 @@ function displayLeaderBoard(){
 }
 
 function checkBet(value){
-    const pokerChips = {
-        1: oneChipBtn,
-        10: tenChipBtn,
-        100: hundredChipBtn,
-        1000: thousandChipBtn,
-        10000: tenThousandChipBtn
-    }
-    console.log(value)
+    value = parseInt(value,10);
     let player = blackjackPlayers.player(username);
     for (let chip in pokerChips){
-        if (player.balance <= chip){
+        if (player.balance-value <= chip){
             pokerChips[chip].disabled = true;
         }
     }
     player.balance -= value;
-    playerBalanceAmount.innerText = player.balance;
-
+    player.bet += value;
+    document.querySelector("#current-balance").innerText = player.balance;
+    betAmountElem.innerText = player.bet;
 }
 
 async function startGame(){
@@ -393,6 +362,7 @@ async function startGame(){
     drawCardBtn.disabled = false;
     chipBlockDivElem.style.display="block";
     betDisplayDivElem.classList.remove("hidden");
+
     let user = blackjackPlayers.player(username);
     let computer = blackjackPlayers.player("Dealer");
 
@@ -404,7 +374,6 @@ async function startGame(){
         computerProfileImgElem.class= "avatar-picture";
         computerCardElem.appendChild(computerProfileImgElem);
     }
-    checkBet();
     drawCard(computer);
     drawCard(user);
     drawCard(user);
