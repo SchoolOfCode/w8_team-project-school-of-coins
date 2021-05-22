@@ -278,24 +278,25 @@ async function stand(computer,user){
     }
     // See https://en.wikipedia.org/wiki/Blackjack#Rules
     if (user.softHand && user.cardNum === 2 && user.score ===21){
-        outcomeDisplayElem.innerHTML = "<h2>Blackjack! Natural. You get a bonus!!!</h2>";
-        user.balance += TEMP_BET + TEMP_BET*2.5;
+        //win - blackjack
+        user.balance += user.bet + user.bet*1.5;
     } else if(user.score > 21){
-        outcomeDisplayElem.innerHTML = "<h2>Bust!!!</h2>";
-        user.balance -= TEMP_BET;
+        //loss
+        user.balance = user.balance;
     } else if (computer.score > 21 && user.score <= 21){
-        outcomeDisplayElem.innerHTML = "<h2>You win!</h2>";
-        user.balance += TEMP_BET;
+        //win
+        user.balance += user.bet;
     } else if(user.score > computer.score && user.score <= 21){
-        outcomeDisplayElem.innerHTML = "<h2>You win!</h2>";
-        user.balance += TEMP_BET;
+        //win
+        user.balance += user.bet;
     } else if (computer.score > user.score){
-        outcomeDisplayElem.innerHTML = "<h2>You lose!</h2>";
-        user.balance -= TEMP_BET;
+        //loss
+        user.balance = user.balance;
     } else {
-        outcomeDisplayElem.innerHTML = "<h2>It's a draw</h2>";
+        //draw
+        user.balance += user.bet
     }
-    playerBalanceAmount.innerText = player.balance;
+    document.querySelector("#current-balance").innerText = user.balance;
     console.log(blackjackPlayers);
 }
 
@@ -306,6 +307,7 @@ function resetBoard(computer,user){
     drawCardBtn.disabled = true;
     startGameBtn.disabled = false;
     standBtn.disabled = true;
+    betAmountElem.innerText = 0;
     user.reset();
     computer.reset();
 }
