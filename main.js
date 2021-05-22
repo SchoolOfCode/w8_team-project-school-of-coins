@@ -30,8 +30,14 @@ standBtn.addEventListener("click", function(){
 resetBtn.addEventListener("click", function(){
     resetBoard(blackjackPlayers.player("Dealer"),blackjackPlayers.player(username));
 });
+
+// Button original states ########################################################
+drawCardBtn.disabled = true;
+    startGameBtn.disabled = false;
+    standBtn.disabled = true;
 leaderBoardBtn.addEventListener("click", displayLeaderBoard);
 submitUsernameBtn.addEventListener("click",loadProfile);
+
 // Class Declerations #######################################################
 class Player {
 
@@ -247,8 +253,12 @@ async function stand(computer,user){
     for the computer. Keep drawing cards for the house, until we have a 
     maximum of 6 cards or the score exceeds 21. Then check the winning
     conditions and display the outcome and change in balance.
+    Adjustment to be made - when stand button pressed following winner 
+    decision, disable button until reset button or start game pressed
     #################################################################*/
     computer.showHiddenCard = true;
+    standBtn.disabled = true;
+    drawCardBtn.disabled = true;
     await drawCard(computer);
     while (computer.score < 17 && computer.cardNum <6){
         await drawCard(computer);
@@ -282,6 +292,9 @@ function resetBoard(computer,user){
     #################################################################*/
     user.reset();
     computer.reset();
+    drawCardBtn.disabled = true;
+    startGameBtn.disabled = false;
+    standBtn.disabled = true;
 }
 
 function displayLeaderBoard(){
@@ -320,6 +333,13 @@ async function startGame(){
     let user = blackjackPlayers.player(username);
     let computer = blackjackPlayers.player("Dealer");
 
+
+    let username = usernameInputElement.value;
+    let user;
+    [user, playerIndex] = blackjackPlayers.loadPlayer(username);
+    let computer = blackjackPlayers.players[0];
+    standBtn.disabled = false;
+
     if (computer.avatar==null){
         computer.avatar = await getAvatar(computer.username);
         let computerProfileImgElem = document.createElement("img");
@@ -332,6 +352,8 @@ async function startGame(){
     drawCard(computer);
     drawCard(user);
     drawCard(user);
+    startGameBtn.disabled = true;
+    drawCardBtn.disabled = false;
 }
 
 // Profile Functions ######################################################
