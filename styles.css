@@ -1,17 +1,22 @@
 body{
     display:grid;
-    grid-auto-flow: row;
     justify-content: center;
     gap: 1em;
+    background: rgb(27, 41, 41);
+    color: rgb(255, 255, 255);
+    font-family: 'Lucida Sans Unicode', Roboto, Verdana, sans-serif;
+    font-weight: 100;
 }
-
+.hidden{
+    display: none;
+}
 button{
     max-width: 100px;
 }
 h1{
     justify-self: center;
 }
-
+/*-------------Help Overlay-----------------*/
 #overlay{
     position: fixed; /*Sits on top of the page content*/
     display: none; /*Hidden by default*/
@@ -40,9 +45,7 @@ h1{
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
 }
-.hidden{
-    display: none;
-}
+
 /*-------------Avatar-----------------*/
 #player-avatar{
     align-self: center;
@@ -79,14 +82,14 @@ h1{
     justify-self: center;
 }
 
-.player-controls{
-    justify-self: center;
-}
-
 #player-cards{
     display: grid;
     grid-auto-flow: column;
     gap: 1em;
     align-content: center;
     justify-content: center;
+}
+/*-------------Player buttons-----------------*/
+.player-controls{
+    justify-self: center;
 }
