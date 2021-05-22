@@ -15,7 +15,6 @@ const drawCardBtn = document.querySelector("#draw-card");
 const standBtn = document.querySelector("#stand");
 const resetBtn = document.querySelector("#reset");
 const leaderBoardBtn = document.querySelector("#leaderboard");
-const helpBtn = document.querySelector("#Help-button");
 
 const usernameInputElement = document.querySelector("#username");
 
@@ -30,14 +29,12 @@ standBtn.addEventListener("click", function(){
 resetBtn.addEventListener("click", function(){
     resetBoard(blackjackPlayers.player("Dealer"),blackjackPlayers.player(username));
 });
-
-// Button original states ########################################################
-drawCardBtn.disabled = true;
-    startGameBtn.disabled = false;
-    standBtn.disabled = true;
 leaderBoardBtn.addEventListener("click", displayLeaderBoard);
 submitUsernameBtn.addEventListener("click",loadProfile);
-
+//button original states
+drawCardBtn.disabled = true;
+startGameBtn.disabled = false;
+standBtn.disabled = true;
 // Class Declerations #######################################################
 class Player {
 
@@ -253,12 +250,10 @@ async function stand(computer,user){
     for the computer. Keep drawing cards for the house, until we have a 
     maximum of 6 cards or the score exceeds 21. Then check the winning
     conditions and display the outcome and change in balance.
-    Adjustment to be made - when stand button pressed following winner 
-    decision, disable button until reset button or start game pressed
     #################################################################*/
-    computer.showHiddenCard = true;
     standBtn.disabled = true;
     drawCardBtn.disabled = true;
+    computer.showHiddenCard = true;
     await drawCard(computer);
     while (computer.score < 17 && computer.cardNum <6){
         await drawCard(computer);
@@ -277,7 +272,7 @@ async function stand(computer,user){
         outcomeDisplayElem.innerHTML = "<h2>You win!</h2>";
         user.balance += TEMP_BET;
     } else if (computer.score > user.score){
-        outcomeDisplayElem.innerHTML = "<h2>You lose !</h2>";
+        outcomeDisplayElem.innerHTML = "<h2>Bust!!!</h2>";
         user.balance -= TEMP_BET;
     } else {
         outcomeDisplayElem.innerHTML = "<h2>It's a draw</h2>";
@@ -290,11 +285,11 @@ function resetBoard(computer,user){
     /*#################################################################
     clear the screen and reset everything apart from the balance
     #################################################################*/
-    user.reset();
-    computer.reset();
     drawCardBtn.disabled = true;
     startGameBtn.disabled = false;
     standBtn.disabled = true;
+    user.reset();
+    computer.reset();
 }
 
 function displayLeaderBoard(){
@@ -329,16 +324,9 @@ async function startGame(){
     }
     playingButtons.forEach(btn => btn.classList.remove("hidden"));
     customiseAvatarBtn.classList.add("hidden");
-    helpBtn.classList.remove("hidden");
+
     let user = blackjackPlayers.player(username);
     let computer = blackjackPlayers.player("Dealer");
-
-
-    let username = usernameInputElement.value;
-    let user;
-    [user, playerIndex] = blackjackPlayers.loadPlayer(username);
-    let computer = blackjackPlayers.players[0];
-    standBtn.disabled = false;
 
     if (computer.avatar==null){
         computer.avatar = await getAvatar(computer.username);
@@ -348,12 +336,12 @@ async function startGame(){
         computerProfileImgElem.class= "avatar-picture";
         computerCardElem.appendChild(computerProfileImgElem);
     }
-
+   standBtn.disabled = false;
+   startGameBtn.disabled = true;
+   drawCardBtn.disabled = false;
     drawCard(computer);
     drawCard(user);
     drawCard(user);
-    startGameBtn.disabled = true;
-    drawCardBtn.disabled = false;
 }
 
 // Profile Functions ######################################################
