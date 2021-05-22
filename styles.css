@@ -19,6 +19,30 @@ h1{
     grid-column: 3/7;
     text-align: center;
 }
+
+#main-title, #username-heading{
+    color: #f6b93b;
+}
+
+/*-------------Player buttons-----------------*/
+.player-controls{
+    justify-self: center;
+}
+
+/*-------------Help Overlay-----------------*/
+#overlay{
+    position: fixed; /*Sits on top of the page content*/
+    display: none; /*Hidden by default*/
+    width: 100%; /*Full width*/
+    height: 100%; /*Full height*/
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /*Black background with opacity*/
+    z-index: 2; /*Specify a stack order in case you're using a different order for other elements*/
+    cursor: pointer; /*Add a pointer on the hover*/
+
 #pokerChips{
     grid-column: 1;
     grid-row: 0;
@@ -40,6 +64,7 @@ h1{
     align-self: center;
     justify-self: center;
 }
+  
 /*-------------Scores,balances-----------------*/
 #game-outcome{
     display: none;
@@ -67,7 +92,6 @@ h1{
 }
 #hidden-card{
     max-height: 315px;
-    width: 226px;
 }
 #computer-cards{
     grid-row: 2/3;
@@ -91,6 +115,7 @@ h1{
     align-content: center;
     justify-content: center;
 }
+
 /*-------------Player buttons-----------------*/
 .player-controls{
     grid-row: 4;
@@ -111,6 +136,7 @@ h1{
     text-align: center;
 
 }
+
 #tenButton{
     font-size: 1.5em;
     text-align: center;
@@ -245,7 +271,7 @@ h1{
     text-align: center;
     text-decoration: none;
     color: white;
-    background: magenta;
+    background: black;
     border: 10px dashed white;
     border-radius: 6em;
     padding-top: 6em/2 - 1em;
@@ -253,10 +279,10 @@ h1{
     margin: 2em auto;
 }
 #tenThousandChip:hover{
-    background-color: darkmagenta;
+    background-color: black;
 }
 #tenThousandChip:active{
-    background-color: darkmagenta;
+    background-color: black;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
 }

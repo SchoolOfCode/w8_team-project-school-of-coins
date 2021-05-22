@@ -1,0 +1,150 @@
+
+/*------------Draw card button----------------*/
+
+#draw-card {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline:thin;
+    outline-color: white;
+    font-size: medium;
+    color: #fff;
+    background: grey;
+    cursor: pointer;
+    position: relative;
+    border-radius: 5px;
+}
+
+#draw-card:before {
+    content: '';
+    background: linear-gradient(45deg, #48ff00, #00ffd5, #002bff);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowingDrawCard 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 5px;
+}
+
+#draw-card:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: grey;
+    left: 0;
+    top: 0;
+    border-radius: 5px;
+}
+
+@keyframes glowingDrawCard {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+/*------------Start game button----------------*/
+#start-game {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline:thin;
+    outline-color: white;
+    font-size: medium;
+    color: #fff;
+    background: grey;
+    cursor: pointer;
+    position: relative;
+    border-radius: 5px;
+}
+
+#start-game:before {
+    content: '';
+    background: linear-gradient(45deg, #48ff00, #00ffd5, #002bff);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowingStartGame 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 5px;
+}
+
+#start-game:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: grey;
+    left: 0;
+    top: 0;
+    border-radius: 5px;
+}
+
+@keyframes glowingStartGame {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+/*------------Stand button----------------*/
+#stand {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline:thin;
+    outline-color: white;
+    font-size: medium;
+    color: #fff;
+    background: grey;
+    cursor: pointer;
+    position: relative;
+    border-radius: 5px;
+}
+
+#stand:before {
+    content: '';
+    background: linear-gradient(45deg, #48ff00, #00ffd5, #002bff);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowingStand 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 5px;
+}
+
+#stand:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: grey;
+    left: 0;
+    top: 0;
+    border-radius: 5px;
+}
+
+@keyframes glowingStand {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
