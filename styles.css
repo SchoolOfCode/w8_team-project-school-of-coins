@@ -239,7 +239,7 @@ h1{
     text-align: center;
     text-decoration: none;
     color: white;
-    background: black;
+    background: magenta;
     border: 10px dashed white;
     border-radius: 6em;
     padding-top: 6em/2 - 1em;
@@ -247,10 +247,10 @@ h1{
     margin: 2em auto;
 }
 #tenThousandChip:hover{
-    background-color: black;
+    background-color: darkmagenta;
 }
 #tenThousandChip:active{
-    background-color: black;
+    background-color: darkmagenta;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
 }
