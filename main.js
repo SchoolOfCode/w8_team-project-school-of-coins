@@ -277,10 +277,10 @@ async function stand(computer,user){
         outcomeDisplayElem.innerHTML = "<h2>You win!</h2>";
         user.balance += TEMP_BET;
     } else if (computer.score > user.score){
-        outcomeDisplayElem.innerHTML = "<h2>Bust!!!</h2>";
+        outcomeDisplayElem.innerHTML = "<h2>You lose !</h2>";
         user.balance -= TEMP_BET;
     } else {
-        outcomeDisplayElem.innerHTML = "<h2>It's a draw</h2>";
+        outcomeDisplayElem.i nnerHTML = "<h2>It's a draw</h2>";
     }
     playerBalanceDisplay.innerText = `${user.username}'s balance is: ${user.balance}`;
     console.log(blackjackPlayers);
