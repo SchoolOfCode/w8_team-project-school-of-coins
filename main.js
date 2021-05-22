@@ -46,6 +46,21 @@ submitUsernameBtn.addEventListener("click",loadProfile);
 drawCardBtn.disabled = true;
 startGameBtn.disabled = false;
 standBtn.disabled = true;
+
+
+
+
+
+
+
+startGameBtn.classList.add("start-game-enabled");
+
+
+
+
+
+
+
 // Class Declerations #######################################################
 class Player {
 
@@ -272,6 +287,31 @@ async function stand(computer,user){
     standBtn.disabled = true;
     drawCardBtn.disabled = true;
     computer.showHiddenCard = true;
+
+
+
+
+
+
+
+
+    standBtn.classList.remove("stand-enabled")
+    standBtn.classList.add("disabled-buttons");
+
+    drawCardBtn.classList.add("disabled-buttons");
+    drawCardBtn.classList.remove("draw-card-enabled");
+
+    resetBtn.classList.remove("disabled-buttons");
+    resetBtn.classList.add("reset-enabled");
+
+
+
+
+
+
+
+
+    
     await drawCard(computer);
     while (computer.score < 17 && computer.cardNum <6){
         await drawCard(computer);
@@ -307,9 +347,30 @@ function resetBoard(computer,user){
     drawCardBtn.disabled = true;
     startGameBtn.disabled = false;
     standBtn.disabled = true;
+
+
+
+
+
+
+
+
+    resetBtn.classList.remove("reset-enabled")
+    resetBtn.classList.add("disabled-buttons")
+
+    startGameBtn.classList.add("start-game-enabled")
+    startGameBtn.classList.remove("disabled-buttons")
+
+
+
+
+
+
+
     betAmountElem.innerText = 0;
     user.reset();
     computer.reset();
+
 }
 
 function displayLeaderBoard(){
@@ -364,6 +425,37 @@ async function startGame(){
     drawCardBtn.disabled = false;
     chipBlockDivElem.style.display="block";
     betDisplayDivElem.classList.remove("hidden");
+    
+    
+
+
+
+
+
+
+
+    drawCardBtn.classList.add("draw-card-enabled");
+    drawCardBtn.classList.remove("disabled-button");
+
+    resetBtn.classList.add("disabled-buttons");
+    resetBtn.classList.remove("reset-enabled");
+    
+    standBtn.classList.remove("disabled-buttons");
+    standBtn.classList.add("stand-enabled");
+    
+    startGameBtn.classList.remove("start-game-enabled");
+    startGameBtn.classList.add("disabled-buttons");
+    
+
+
+
+
+
+
+
+
+
+
 
     let user = blackjackPlayers.player(username);
     let computer = blackjackPlayers.player("Dealer");
