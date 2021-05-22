@@ -1,5 +1,6 @@
 // DOM Selectors #######################################################
-const playerBalanceDisplay = document.querySelector("#player-balance");
+const playerBalanceDisplay = document.querySelector("#player-balance-container");
+const playerBalanceAmount = document.querySelector("#current-balance");
 const playerCardElem = document.querySelector("#player-cards");
 const playerScoreDisplayElem = document.querySelector("#player-score");
 const computerCardElem = document.querySelector("#computer-cards");
@@ -8,6 +9,8 @@ const outcomeDisplayElem = document.querySelector("#game-outcome");
 const leaderBoardDisplayElem = document.querySelector("#leaderboard-display-container");
 const usernameAvatarContainerElem = document.querySelector(".username-avatar-container");
 const chipBlockDivElem = document.querySelector(".pokerChips");
+const betAmountElem = document.querySelector("#bet-amount");
+const betDisplayDivElem = document.querySelector("#bet-display")
 
 const customiseAvatarBtn = document.querySelector("#customise-avatar");
 const submitUsernameBtn = document.querySelector("#submit-username");
@@ -20,6 +23,43 @@ const helpBtn = document.querySelector("#help-button");
 
 const usernameInputElement = document.querySelector("#username");
 
+//Poker Chip Buttons & Event Handlers ###################################
+const oneChipBtn = document.querySelector("#oneChip");
+const tenChipBtn = document.querySelector("#tenChip");
+const hundredChipBtn = document.querySelector("#hundredChip");
+const thousandChipBtn = document.querySelector("#thousandChip");
+const tenThousandChipBtn = document.querySelector("#tenThousandChip");
+
+// oneChipBtn.addEventListener("click", ()=>{
+//     checkBet();
+//     blackjackPlayers.player(username).bet += 1;
+//     blackjackPlayers.player(username).balance -= 1;
+//     betAmountElem.innerHTML = blackjackPlayers.player(username).bet;
+// });
+tenChipBtn.addEventListener("click", ()=>{
+    checkBet();
+    blackjackPlayers.player(username).bet += 10;
+    blackjackPlayers.player(username).balance -= 1;
+    betAmountElem.innerHTML = blackjackPlayers.player(username).bet;
+});
+hundredChipBtn.addEventListener("click", ()=>{
+    checkBet();
+    blackjackPlayers.player(username).bet += 100;
+    blackjackPlayers.player(username).balance -= 100;
+    betAmountElem.innerHTML = blackjackPlayers.player(username).bet;
+});
+thousandChipBtn.addEventListener("click", ()=>{
+    checkBet();
+    blackjackPlayers.player(username).bet += 1000;
+    blackjackPlayers.player(username).balance -= 1000;
+    betAmountElem.innerHTML = blackjackPlayers.player(username).bet;
+});
+tenThousandChipBtn.addEventListener("click", ()=>{
+    checkBet();
+    blackjackPlayers.player(username).bet += 10000;
+    blackjackPlayers.player(username).balance -= 10000;
+    betAmountElem.innerHTML = blackjackPlayers.player(username).bet;
+});
 // Event Handlers #######################################################
 startGameBtn.addEventListener("click", startGame);
 drawCardBtn.addEventListener("click", function(){
@@ -264,7 +304,7 @@ async function stand(computer,user){
     // See https://en.wikipedia.org/wiki/Blackjack#Rules
     if (user.softHand && user.cardNum === 2 && user.score ===21){
         outcomeDisplayElem.innerHTML = "<h2>Blackjack! Natural. You get a bonus!!!</h2>";
-        user.balance += TEMP_BET + TEMP_BET*0.5;
+        user.balance += TEMP_BET + TEMP_BET*2.5;
     } else if(user.score > 21){
         outcomeDisplayElem.innerHTML = "<h2>Bust!!!</h2>";
         user.balance -= TEMP_BET;
@@ -280,7 +320,7 @@ async function stand(computer,user){
     } else {
         outcomeDisplayElem.innerHTML = "<h2>It's a draw</h2>";
     }
-    playerBalanceDisplay.innerText = `${user.username}'s balance is: ${user.balance}`;
+    playerBalanceAmount.innerText = player.balance;
     console.log(blackjackPlayers);
 }
 
@@ -315,6 +355,26 @@ function displayLeaderBoard(){
     });
 }
 
+function checkBet(value){
+    const pokerChips = {
+        1: oneChipBtn,
+        10: tenChipBtn,
+        100: hundredChipBtn,
+        1000: thousandChipBtn,
+        10000: tenThousandChipBtn
+    }
+    console.log(value)
+    let player = blackjackPlayers.player(username);
+    for (let chip in pokerChips){
+        if (player.balance <= chip){
+            pokerChips[chip].disabled = true;
+        }
+    }
+    player.balance -= value;
+    playerBalanceAmount.innerText = player.balance;
+
+}
+
 async function startGame(){
     /*#################################################################
     Re-use the same deck unless there are less than 12ish cards remaining,
@@ -332,7 +392,7 @@ async function startGame(){
     startGameBtn.disabled = true;
     drawCardBtn.disabled = false;
     chipBlockDivElem.style.display="block";
-
+    betDisplayDivElem.classList.remove("hidden");
     let user = blackjackPlayers.player(username);
     let computer = blackjackPlayers.player("Dealer");
 
@@ -344,7 +404,7 @@ async function startGame(){
         computerProfileImgElem.class= "avatar-picture";
         computerCardElem.appendChild(computerProfileImgElem);
     }
-
+    checkBet();
     drawCard(computer);
     drawCard(user);
     drawCard(user);
@@ -394,7 +454,7 @@ async function loadProfile(){
         playerCardElem.appendChild(profileImg);
     }
 
-    playerBalanceDisplay.innerText = `${user.username}'s balance is: ${user.balance}`;
+    playerBalanceDisplay.innerHTML = `<p>${user.username}'s balance is: <span id='current-balance'>${user.balance}</span></p>`;
     startGameBtn.classList.remove("hidden"); //display the start button if the profile is loaded sucessfully
 }
 
