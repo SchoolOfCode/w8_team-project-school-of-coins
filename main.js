@@ -83,6 +83,8 @@ class Player {
         }
         let imgElem = document.createElement("img");
         imgElem.src=playerObj.hand[this.cardNum].cards[0].image;
+        imgElem.classList.add("playing-cards")
+        imgElem.id = `${this.id}-card-${this.cardNum}`
         parentDivElem.appendChild(imgElem);
         if (this.id ==="computer" && this.showHiddenCard == false){
             let hiddenCard = document.createElement("img");
