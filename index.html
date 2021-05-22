@@ -8,18 +8,18 @@
     <title>SOC Blackjack</title>
 </head>
 <body>
-    <h1 id="main-title">School of Coins: Blackjack</h1>
+    <h1>School of Coins: Blackjack</h1>
     <div class = "username-avatar-container">
         <form onsubmit="return false">
-            <label for="username" id="username-heading">Username:</label>
-            <input type="text" id="username" maxlength="20" aria-label="username input" value="Emilio" autofocus>
+            <label for="username">Username:</label>
+            <input type="text" id="username" maxlength="20" aria-label="username input" value="Jack" autofocus>
             <button id="submit-username">Load Profile</button>
             <button id="customise-avatar" class="hidden">Customise</button>
         </form>
     </div>
     <!--class for the chips-->
     <div class="pokerChips">
-        <button id="oneChip"><span id="oneButton">1</span></button>
+        <button id="oneChip" value="1" onclick="checkBet(this.value)"><span id="oneButton">1</span></button>
         <button id="tenChip"><span id="tenButton">10</span></button>
         <button id="hundredChip"><span id="hundredButton">100</span></button>
         <button id="thousandChip"><span id="thousandButton">1K</span></button>
@@ -27,8 +27,9 @@
     </div>
     <div id="computer-cards"></div>
     <div id="computer-score" class="hidden"></div>
+    <div id="bet-display" class="hidden">Bet: Cr.<span id="bet-amount">0</span></div>
     <div id="player-cards"></div>
-    <div id="player-score"></div>
+    <div id="player-score"class="hidden"></div>
     <div id="player-balance-container">
         <h2 id ="player-balance"></h2>
     </div>
