@@ -418,7 +418,7 @@ async function loadProfile(){
     resetBoard(computer,user);
 
     customiseAvatarBtn.classList.remove("hidden");
-
+    usernameAvatarContainerElem.style.gridRow = "7";
     let profileImg = document.createElement("img");
     profileImg.src = await getAvatar(user.username);
     profileImg.classList.add("avatar-picture");
@@ -427,7 +427,7 @@ async function loadProfile(){
         profileImg.id = `${user.username}-avatar`;
         playerAvatarElem.appendChild(profileImg);
     }
-
+    document.querySelector("body").style.backgroundImage = "none";
     playerBalanceDisplay.innerHTML = `<p>Your balance is <span id='current-balance'>${user.balance}</span> credits</p>`;
     startGameBtn.classList.remove("hidden");
 }
