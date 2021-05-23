@@ -285,10 +285,10 @@ async function stand(computer,user){
         user.balance = user.balance;
     } else if (computer.score > 21 && user.score <= 21){
         //win
-        user.balance += user.bet;
+        user.balance += user.bet * 2;
     } else if(user.score > computer.score && user.score <= 21){
         //win
-        user.balance += user.bet;
+        user.balance += user.bet * 2;
     } else if (computer.score > user.score){
         //loss
         user.balance = user.balance;
