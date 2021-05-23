@@ -24,8 +24,20 @@
         <button id="hundredChip" value="100" onclick="checkBet(this.value)"><span id="hundredButton">100</span></button>
         <button id="thousandChip" value="1000" onclick="checkBet(this.value)"><span id="thousandButton">1K</span></button>
         <button id="tenThousandChip" value="1000" onclick="checkBet(this.value)"><span id="tenThousandButton">10K</span></button>
-
+    
     </div>
+
+
+    <!--Class added for the toggle box-->
+    <class class="toggle-radio">
+        <input type="radio" name="rdo" id="plus" value="plus" >
+        <input type="radio" name="rdo" id="minus" value="minus">
+        <div class="switch">
+          <label for="minus">-</label>
+          <label for="plus">+</label>
+        </div>
+      </class>
+
     <div id="computer-cards"></div>
     <div id="computer-score" class="hidden"></div>
     <div id="bet-display" class="hidden">Bet: Cr.<span id="bet-amount">0</span></div>

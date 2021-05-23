@@ -22,6 +22,7 @@ const helpBtn = document.querySelector("#help-button");
 
 const usernameInputElement = document.querySelector("#username");
 
+
 //Poker Chip Buttons & Event Handlers ###################################
 const oneChipBtn = document.querySelector("#oneChip");
 const tenChipBtn = document.querySelector("#tenChip");
