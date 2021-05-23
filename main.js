@@ -2,8 +2,12 @@
 const playerBalanceDisplay = document.querySelector("#player-balance-container");
 const playerCardElem = document.querySelector("#player-cards");
 const playerScoreDisplayElem = document.querySelector("#player-score");
+const playerAvatarElem =  document.querySelector("#player-avatar");
+
 const computerCardElem = document.querySelector("#computer-cards");
 const computerScoreDisplayElem = document.querySelector("#computer-score");
+const computerAvatarElem =  document.querySelector("#computer-avatar");
+
 const outcomeDisplayElem = document.querySelector("#game-outcome");
 const leaderBoardDisplayElem = document.querySelector("#leaderboard-display-container");
 const usernameAvatarContainerElem = document.querySelector(".username-avatar-container");
@@ -114,7 +118,7 @@ class Player {
     Change the value of the appropriate user/computer element with the score
     #################################################################*/
         let parentDivElem = document.querySelector(`#${this.id}-score`);
-        parentDivElem.innerHTML = `<h2>${this.username}'s score is: ${this.score}</h2>`;
+        parentDivElem.innerHTML = `<h2>Score: ${this.score}</h2>`;
     }
     reset(){
     /*#################################################################
@@ -123,9 +127,11 @@ class Player {
         let parentImgDiv = document.querySelector(`#${this.id}-cards`);
         let parentScoreDiv = document.querySelector(`#${this.id}-score`);
         outcomeDisplayElem.innerHTML = "";
-        while (parentImgDiv.childNodes.length > 1) {
+        while (parentImgDiv.childNodes.length >= 2) {
+            console.log(this.id, parentImgDiv.childNodes.length,parentImgDiv.lastChild);
             parentImgDiv.removeChild(parentImgDiv.lastChild);
         }
+
         parentScoreDiv.innerHTML="";
         this.hand = [];
         this.score = 0;
@@ -425,7 +431,7 @@ async function loadProfile(){
         playerCardElem.appendChild(profileImg);
     }
 
-    playerBalanceDisplay.innerHTML = `<p>${user.username}'s balance is: <span id='current-balance'>${user.balance}</span></p>`;
+    playerBalanceDisplay.innerHTML = `<p>Your balance is <span id='current-balance'>${user.balance}</span> credits</p>`;
     startGameBtn.classList.remove("hidden"); //display the start button if the profile is loaded sucessfully
 }
 

@@ -26,11 +26,15 @@
         <button id="tenThousandChip" value="1000" onclick="checkBet(this.value)"><span id="tenThousandButton">10K</span></button>
 
     </div>
-    <div id="computer-cards"></div>
-    <div id="computer-score" class="hidden"></div>
-    <div id="bet-display" class="hidden">Bet: Cr.<span id="bet-amount">0</span></div>
-    <div id="player-cards"></div>
-    <div id="player-score"class="hidden"></div>
+    <div id="computer-cards">
+        <div id="computer-score"></div>
+    </div>
+    <div id="bet-display" class="hidden">Bet Amount: <span id="bet-amount">0</span> credits</div>
+    <div id="player-cards-container">
+        <div id="player-avatar"><div id="player-score"></div></div>
+        <div id="player-cards"></div>
+    </div>
+    
     <div id="player-balance-container"></div>
 
     <div id="game-outcome"></div>
