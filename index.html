@@ -24,20 +24,25 @@
         <button id="hundredChip" value="100" onclick="checkBet(this.value)"><span id="hundredButton">100</span></button>
         <button id="thousandChip" value="1000" onclick="checkBet(this.value)"><span id="thousandButton">1K</span></button>
         <button id="tenThousandChip" value="1000" onclick="checkBet(this.value)"><span id="tenThousandButton">10K</span></button>
-
     </div>
-    <div id="computer-cards">
-        <div id="computer-score"></div>
+    <!--Card, Avatar, Bet and Score display-->
+    <div id="computer-cards-container">
+        <div id="computer-avatar">
+            <div id="computer-score"></div>
+        </div>
+        <div id="computer-cards"></div>
     </div>
     <div id="bet-display" class="hidden">Bet Amount: <span id="bet-amount">0</span> credits</div>
     <div id="player-cards-container">
-        <div id="player-avatar"><div id="player-score"></div></div>
+        <div id="player-avatar">
+            <div id="player-score"></div>
+        </div>
         <div id="player-cards"></div>
     </div>
-    
+    <!--Current player balance-->
     <div id="player-balance-container"></div>
-
     <div id="game-outcome"></div>
+    <!--Game control buttons-->
     <div class="player-controls">
         <button id="start-game"class="hidden">Start</button>
         <button id="draw-card" class="hidden">Hit</button>

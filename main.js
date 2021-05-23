@@ -127,11 +127,9 @@ class Player {
         let parentImgDiv = document.querySelector(`#${this.id}-cards`);
         let parentScoreDiv = document.querySelector(`#${this.id}-score`);
         outcomeDisplayElem.innerHTML = "";
-        while (parentImgDiv.childNodes.length >= 2) {
-            console.log(this.id, parentImgDiv.childNodes.length,parentImgDiv.lastChild);
+        while (parentImgDiv.hasChildNodes()) {
             parentImgDiv.removeChild(parentImgDiv.lastChild);
         }
-
         parentScoreDiv.innerHTML="";
         this.hand = [];
         this.score = 0;
@@ -379,8 +377,7 @@ async function startGame(){
         let computerProfileImgElem = document.createElement("img");
         computerProfileImgElem.src = computer.avatar;
         computerProfileImgElem.id = `${computer.id}-avatar`;
-        computerProfileImgElem.class= "avatar-picture";
-        computerCardElem.appendChild(computerProfileImgElem);
+        computerAvatarElem.appendChild(computerProfileImgElem);
     }
     drawCard(computer);
     drawCard(user);
@@ -404,7 +401,7 @@ const styleOptions = {
 }
 async function loadProfile(){
     /*#################################################################
-    Use this to load the profile, generate the avatar with the seed
+    Use this to load the profile, generate the avatar with the seed (name)
     Once the profile has been loaded, show the start game button
     Reset the game board on clicking load profile
     #################################################################*/
@@ -413,9 +410,9 @@ async function loadProfile(){
     let computer = blackjackPlayers.player("Dealer");
 
     playerBalanceDisplay.innerHTML="";
-    let prevAvatarImage = document.querySelector("#player-avatar");
-    if (prevAvatarImage !== null){
-        playerCardElem.removeChild(prevAvatarImage);
+    let prevAvatarImage = document.querySelector(".avatar-picture");
+    if (prevAvatarImage  !== null){
+        playerAvatarElem.removeChild(prevAvatarImage);
     }
 
     resetBoard(computer,user);
@@ -424,15 +421,15 @@ async function loadProfile(){
 
     let profileImg = document.createElement("img");
     profileImg.src = await getAvatar(user.username);
-    profileImg.class = "avatar-picture";
+    profileImg.classList.add("avatar-picture");
     user.avatar = profileImg.src;
     if (user.avatar !== null){
-        profileImg.id = `${user.id}-avatar`;
-        playerCardElem.appendChild(profileImg);
+        profileImg.id = `${user.username}-avatar`;
+        playerAvatarElem.appendChild(profileImg);
     }
 
     playerBalanceDisplay.innerHTML = `<p>Your balance is <span id='current-balance'>${user.balance}</span> credits</p>`;
-    startGameBtn.classList.remove("hidden"); //display the start button if the profile is loaded sucessfully
+    startGameBtn.classList.remove("hidden");
 }
 
 async function getAvatar(seed=username,width=200,height=200,backgroundColor="transparent", styleFurther=false){
