@@ -36,6 +36,7 @@ const thousandChipBtn = document.querySelector("#thousandChip");
 const tenThousandChipBtn = document.querySelector("#tenThousandChip");
 
 // Event Handlers #######################################################
+
 startGameBtn.addEventListener("click", startGame);
 drawCardBtn.addEventListener("click", function () {
   drawCard(blackjackPlayers.player(username));
@@ -394,6 +395,8 @@ async function startGame() {
   drawCardBtn.disabled = false;
   chipBlockDivElem.style.display = "block";
   betDisplayDivElem.classList.remove("hidden");
+
+  document.getElementById("SOCtable").style.visibility = "visible";
 
   let user = blackjackPlayers.player(username);
   let computer = blackjackPlayers.player("Dealer");

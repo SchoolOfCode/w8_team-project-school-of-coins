@@ -8,7 +8,10 @@
     <title>SOC Blackjack</title>
   </head>
   <body>
-    <h1>School of Coins: Blackjack</h1>
+    <!-- <h1>School of Coins: Blackjack</h1> -->
+    <img src="./images/BlackJackWelcomeSMALL.png" alt="" id="welcome" />
+    <img src="./images/SOCtable.png" alt="SOC Table" id="SOCtable" />
+    <!-- <a id="showTable">SOC table</a> -->
     <div class="username-avatar-container">
       <form onsubmit="return false">
         <label for="username">Username:</label>
@@ -26,19 +29,44 @@
     </div>
     <!--class for the chips-->
     <div class="pokerChips">
-      <button id="oneChip" value="1" onclick="checkBet(this.value)">
+      <button
+        id="oneChip"
+        class="chips"
+        value="1"
+        onclick="checkBet(this.value)"
+      >
         <span id="oneButton">1</span>
       </button>
-      <button id="tenChip" value="10" onclick="checkBet(this.value)">
+      <button
+        id="tenChip"
+        class="chips"
+        value="10"
+        onclick="checkBet(this.value)"
+      >
         <span id="tenButton">10</span>
       </button>
-      <button id="hundredChip" value="100" onclick="checkBet(this.value)">
+      <button
+        id="hundredChip"
+        class="chips"
+        value="100"
+        onclick="checkBet(this.value)"
+      >
         <span id="hundredButton">100</span>
       </button>
-      <button id="thousandChip" value="1000" onclick="checkBet(this.value)">
+      <button
+        id="thousandChip"
+        class="chips"
+        value="1000"
+        onclick="checkBet(this.value)"
+      >
         <span id="thousandButton">1K</span>
       </button>
-      <button id="tenThousandChip" value="1000" onclick="checkBet(this.value)">
+      <button
+        id="tenThousandChip"
+        class="chips"
+        value="1000"
+        onclick="checkBet(this.value)"
+      >
         <span id="tenThousandButton">10K</span>
       </button>
     </div>

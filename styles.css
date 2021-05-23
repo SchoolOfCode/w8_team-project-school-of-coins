@@ -1,5 +1,5 @@
 body {
-  display: grid;
+  /* display: grid; */
   grid-template-columns: repeat(8, 12%);
   grid-template-rows: repeat(autofill, minmax(100px, 1fr));
   gap: 1em;
@@ -8,6 +8,13 @@ body {
   font-family: "Lucida Sans Unicode", Roboto, Verdana, sans-serif;
   font-weight: 100;
 }
+#welcome {
+  width: 500px;
+}
+.SOCtable {
+  visibility: hidden;
+}
+
 .hidden {
   display: none;
 }
@@ -25,8 +32,8 @@ h1 {
 }
 
 .username-avatar-container {
-  grid-row: 5;
-  grid-column: 3/7;
+  grid-row: 2;
+  grid-column: 1/7;
   text-align: center;
 }
 
@@ -34,10 +41,12 @@ h1 {
 #player-avatar {
   align-self: center;
   justify-self: center;
+  max-width: 100px;
 }
 #computer-avatar {
   align-self: center;
   justify-self: center;
+  max-width: 100px;
 }
 /*-------------Scores,balances-----------------*/
 #game-outcome {
@@ -69,11 +78,11 @@ h1 {
 }
 /*-------------Cards-----------------*/
 .playing-cards {
-  max-width: 300px;
+  max-width: 100px;
 }
 #hidden-card {
-  max-height: 315px;
-  width: 226px;
+  max-height: 138.938px;
+  width: 100px;
 }
 #computer-cards {
   grid-row: 2/3;
@@ -133,24 +142,46 @@ h1 {
   text-align: center;
 }
 
-#oneChip {
+.chips {
   display: block;
   grid-row: 1;
-  width: 2.5em;
-  height: 2.5em;
-  font-size: 2.5em;
-  font-weight: 700;
+  width: 2em;
+  height: 2em;
+  font-size: 2em;
+  font-weight: 1;
   text-transform: uppercase;
   text-align: center;
   text-decoration: none;
   color: white;
   background: red;
-  border: 10px dashed white;
+  border: 3px dashed white;
   border-radius: 6em;
   padding-top: 6em/2 - 1em;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  margin: 2em auto;
+  margin: 1em auto;
 }
+.chip:hover {
+  background-color: gold;
+}
+
+/* #oneChip {
+  display: block;
+  grid-row: 1;
+  width: 2em;
+  height: 2em;
+  font-size: 2em;
+  font-weight: 1;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  background: red;
+  border: 3px dashed white;
+  border-radius: 6em;
+  padding-top: 6em/2 - 1em;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  margin: 1em auto;
+} */
 #oneChip:hover {
   background-color: darkred;
 }
@@ -160,7 +191,7 @@ h1 {
   transform: translateY(4px);
 }
 
-#tenChip {
+/* #tenChip {
   display: block;
   width: 2.5em;
   height: 2.5em;
@@ -176,7 +207,7 @@ h1 {
   padding-top: 6em/2 - 1em;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   margin: 2em auto;
-}
+} */
 #tenChip:hover {
   background-color: darkblue;
 }
