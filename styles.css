@@ -24,12 +24,15 @@ h1{
     grid-row: 0;
 }
 
+#SOC-header{
+    color: #f6b93b;    
+}
+
 .username-avatar-container{
     grid-row: 5;
     grid-column: 3/7;
     text-align: center;
 }
-
 
 /*-------------Avatar-----------------*/
 #player-avatar{
