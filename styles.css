@@ -4,7 +4,7 @@ body{
     font-family: 'Lucida Sans Unicode', Roboto, Verdana, sans-serif;
     background-image: url("images/BlackJackWelcomeTrans.png");
     background-repeat: no-repeat;
-    background-size:  cover;
+    background-size:  100%;
     background-position: top;
 }
 #game-container{
@@ -22,9 +22,9 @@ body{
 }
 
 .username-avatar-container{
-    grid-row: 4;
-    grid-column: 2/8;
-    text-align: center;
+    grid-row: 1;
+    grid-column: 1/4;
+    margin: 1em;
 
 }
 .username-avatar-container label{
@@ -119,19 +119,28 @@ body{
 
 
 /*-------------Player buttons-----------------*/
-
+#help-button{
+    display:unset;
+    position: fixed;
+    margin: 1em;
+    top: 0;
+    right:0;
+}
 .player-controls{
-    grid-row: 5;
-    grid-column: 3/7;
-    justify-self: center;
-    align-self: flex-end;
+    display:unset;
+    position: fixed;
+    margin: auto;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    margin: 1em;
 }
 
 /* Adding the css for the chip */
 .pokerChips{
     display: none;
     grid-column: 1;
-    grid-row: 1/6;
+    grid-row: 2/6;
     justify-self: center;
     align-self: center;
 }
