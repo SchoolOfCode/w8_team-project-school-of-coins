@@ -347,6 +347,14 @@ function checkBet(value){
     betAmountElem.innerText = player.bet;
 }
 
+function checkedToggle(){
+    if(document.getElementById("plus").checked){
+        console.log("plus");
+    } else if(document.getElementById("minus").checked){
+        console.log("minus");
+    }
+};
+
 async function startGame(){
     /*#################################################################
     Re-use the same deck unless there are less than 12ish cards remaining,
