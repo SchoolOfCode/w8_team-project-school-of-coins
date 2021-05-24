@@ -402,7 +402,6 @@ async function startGame(){
     drawCardBtn.disabled = false;
     chipBlockDivElem.style.display="block";
     betDisplayDivElem.classList.remove("hidden");
-    document.querySelector("body").style.backgroundImage = 'url("images/SOCtable.png")';
 
     drawCardBtn.classList.add("draw-card-enabled");
     drawCardBtn.classList.remove("disabled-button");

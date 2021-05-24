@@ -36,22 +36,24 @@
             </div>
         </div>
         <!--Card, Avatar, Bet and Score display-->
-        <div id="computer-cards-container">
-            <div id="computer-avatar">
-                <div id="computer-score"></div>
+        <div id="table-background">
+            <div id="computer-cards-container">
+                <div id="computer-avatar">
+                    <div id="computer-score"></div>
+                </div>
+                <div id="computer-cards"></div>
             </div>
-            <div id="computer-cards"></div>
-        </div>
-        <div id="bet-display" class="hidden">Bet Amount: <span id="bet-amount">0</span> credits</div>
-        <div id="player-cards-container">
-            <div id="player-avatar">
-                <div id="player-score"></div>
+            <div id="bet-display" class="hidden">Bet Amount: <span id="bet-amount">0</span> credits</div>
+            <div id="player-cards-container">
+                <div id="player-avatar">
+                    <div id="player-score"></div>
+                </div>
+                <div id="player-cards"></div>
             </div>
-            <div id="player-cards"></div>
         </div>
         <!--Current player balance-->
         <div id="player-balance-container"></div>
-        <div id="game-outcome"></div>
+        <div id="game-outcome" class="hidden"></div>
         <!--Game control buttons-->
         <div class="player-controls">
             <button id="start-game"class="hidden">Start</button>
@@ -61,7 +63,7 @@
             <button id="leaderboard"class="hidden">Leaderboard</button>
             <button id="help-button" class="hidden" onclick="overlayOn()">Help</button>
         </div>
-        <div id="leaderboard-display-container"></div>
+        <div id="leaderboard-display-container"class="hidden">></div>
     <!--Created the overlay and added text inside of the overlay for the instructions -->
         <div id="overlay" onclick="overlayOff()">
             <div id="helpText">
