@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="buttonstyle.css" />
+    <title>SOC Blackjack</title>
+  </head>
+  <body>
+    <h1 aria-label="School of Coins: Blackjack" class="hidden">
+      School of Coins: Blackjack
+    </h1>
+    <div id="game-container">
+      <div class="username-avatar-container">
+        <form onsubmit="return false">
+          <label id="username-label" for="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            maxlength="20"
+            aria-label="username input"
+            value="Jack"
+            autofocus
+          />
+          <button id="submit-username">Load Profile</button>
+          <button id="customise-avatar" class="hidden">Customise</button>
+        </form>
+      </div>
+      <!--class for the chips-->
+      <div class="pokerChips">
+        <button id="oneChip" value="1" onclick="checkBet(this.value)">
+          <span id="oneButton">1</span>
+        </button>
+        <button id="tenChip" value="10" onclick="checkBet(this.value)">
+          <span id="tenButton">10</span>
+        </button>
+        <button id="hundredChip" value="100" onclick="checkBet(this.value)">
+          <span id="hundredButton">100</span>
+        </button>
+        <button id="thousandChip" value="1000" onclick="checkBet(this.value)">
+          <span id="thousandButton">1K</span>
+        </button>
+        <button
+          id="tenThousandChip"
+          value="1000"
+          onclick="checkBet(this.value)"
+        >
+          <span id="tenThousandButton">10K</span>
+        </button>
+        <div class="toggle-radio">
+          <input type="radio" name="rdo" id="plus" value="plus" checked />
+          <input type="radio" name="rdo" id="minus" value="minus" />
+          <div class="switch">
+            <label for="minus">-</label>
+            <label for="plus">+</label>
+          </div>
+        </div>
+      </div>
+      <!--Card, Avatar, Bet and Score display-->
+      <div id="computer-cards-container">
+        <div id="computer-avatar">
+          <div id="computer-score"></div>
+        </div>
+        <div id="computer-cards"></div>
+      </div>
+      <div id="bet-display" class="hidden">
+        Bet Amount: <span id="bet-amount">0</span> credits
+      </div>
+      <div id="player-cards-container">
+        <div id="player-avatar">
+          <div id="player-score"></div>
+        </div>
+        <div id="player-cards"></div>
+      </div>
+      <!--Current player balance-->
+      <div id="player-balance-container"></div>
+      <div id="game-outcome"></div>
+      <!--Game control buttons-->
+      <div class="player-controls">
+        <button id="start-game" class="hidden">Start Game</button>
+        <button id="draw-card" class="hidden">Hit</button>
+        <button id="stand" class="hidden">Stand</button>
+        <button id="reset" class="hidden">New Game</button>
+        <button id="leaderboard" class="hidden">Leaderboard</button>
+      </div>
+      <button id="help-button" class="hidden" onclick="overlayOn()">
+        Help
+      </button>
+      <div id="leaderboard-display-container"></div>
+      <!--Created the overlay and added text inside of the overlay for the instructions -->
+      <div id="overlay" onclick="overlayOff()">
+        <div id="helpText">
+          <p>The Rules:</p>
+          <ol>
+            <li>
+              The goal of BlackJack is to beat the dealers hand without going
+              over 21
+            </li>
+            <li>Face cards(Royals) are worth 10 & Aces are worth 1 or 11</li>
+            <li>
+              Each player starts with two cards, and one of the dealer's cards
+              is hidden until the end of the round
+            </li>
+            <li>To 'HIT' is to ask for another card</li>
+            <li>
+              To 'STAND' is to hold the value that you have and end your turn
+            </li>
+            <li>
+              If you go over 21 you are then bust, the dealer will win
+              regardless
+            </li>
+            <li>
+              If you are dealt 21 from the start (Ace & 10), you get BlackJack
+              and win
+            </li>
+          </ol>
+          <p>Good Luck and have fun!</p>
+        </div>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>

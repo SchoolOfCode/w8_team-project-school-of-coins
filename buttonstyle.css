@@ -1,12 +1,12 @@
 /*---------Disable Buttons Styling---------*/
 
 .disabled-buttons {
-    color: #543e12;
+    color: #8f691e;
     text-transform: uppercase;
     text-decoration: none;
-    background: transparent;
+    background-color: rgba(0,0,0,0.3);
     padding: 20px;
-    border: 4px solid #543e12;
+    border: 4px solid #8f691e;
     border-radius: 10px;
     transition: all 0.4s ease 0s;
 
@@ -18,7 +18,7 @@
     color: #f6b93b;
     text-transform: uppercase;
     text-decoration: none;
-    background: transparent;
+    background-color: rgba(0,0,0,0.3);
     padding: 20px;
     border: 4px solid #f6b93b;
     border-radius: 10px;
@@ -40,7 +40,7 @@
     color: #f6b93b;
     text-transform: uppercase;
     text-decoration: none;
-    background: transparent;
+    background-color: rgba(0,0,0,0.3);
     padding: 20px;
     border: 4px solid #f6b93b;
     border-radius: 10px;
@@ -62,7 +62,7 @@
     color: #f6b93b;
     text-transform: uppercase;
     text-decoration: none;
-    background: transparent;
+    background-color: rgba(0,0,0,0.3);
     padding: 20px;
     border: 4px solid #f6b93b;
     border-radius: 10px;
@@ -85,7 +85,7 @@
     text-transform: uppercase;
     min-width: 150px;
     text-decoration: none;
-    background: transparent;
+    background-color: rgba(0,0,0,0.3);
     padding: 20px;
     border: 4px solid #f6b93b;
     border-radius: 10px;
@@ -107,7 +107,7 @@
     color: #f6b93b;
     text-transform: uppercase;
     text-decoration: none;
-    background: transparent;
+    background-color: rgba(0,0,0,0.3);
     padding: 20px;
     border: 4px solid #f6b93b;
     border-radius: 10px;
@@ -129,7 +129,7 @@
     color: #f6b93b;
     text-transform: uppercase;
     text-decoration: none;
-    background: transparent;
+    background-color: rgba(0,0,0,0.3);
     padding: 20px;
     border: 4px solid #f6b93b;
     border-radius: 10px;
