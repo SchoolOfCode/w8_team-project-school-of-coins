@@ -46,6 +46,7 @@ resetBtn.addEventListener("click", function(){
 });
 leaderBoardBtn.addEventListener("click", displayLeaderBoard);
 submitUsernameBtn.addEventListener("click",loadProfile);
+
 //button original states
 drawCardBtn.disabled = true;
 startGameBtn.disabled = false;
@@ -133,6 +134,7 @@ class Player {
         parentScoreDiv.innerHTML="";
         this.hand = [];
         this.score = 0;
+        this.bet = 0;
         this.showHiddenCard = false;
         this.softHand=false;
         this.cardNum=0;
@@ -336,10 +338,11 @@ function displayLeaderBoard(){
     });
 }
 
-function checkBet(value,operation=true){
+function checkBet(value){
+    let betRadio = document.querySelectorAll('input[name="rdo"]');
     value = parseInt(value,10);
     let player = blackjackPlayers.player(username);
-    if (operation){
+    if (betRadio[0].checked){
         for (let chip in pokerChips){
             if (player.balance-value <= chip){
                 pokerChips[chip].disabled = true;
@@ -347,9 +350,17 @@ function checkBet(value,operation=true){
         }
         player.bet += value;
         player.balance -= value;
-    } else{
-        player.bet -= value;
-        player.balance += value;
+    }
+    if (betRadio[1].checked){
+        for (let chip in pokerChips){
+            if (player.bet-value >= 0){
+                pokerChips[chip].disabled = false;
+            }
+        }
+        if (player.bet-value >= 0){
+            player.bet -= value;
+            player.balance += value;
+        }
     }
 
     document.querySelector("#current-balance").innerText = player.balance;

@@ -317,3 +317,67 @@ body{
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
 }
+
+/* Added css for the radio button*/
+.switch {
+    grid-column: 1;
+    position: absolute;
+    width: 80px;
+    height: 40px;
+    text-align: center;
+    background: #ddd;
+    transition: all 0.2s ease;
+    border-radius: 2px;
+  }
+  .switch span {
+    position: absolute;
+    width: 20px;
+    height: 4px;
+    top: 50%;
+    left: 50%;
+    background: #fff;
+    display: block;
+    transition: all 0.2s ease;
+  }
+
+  input[type=radio] {
+    display: none;
+  }
+  .switch label {
+    cursor: pointer;
+    color: rgba(0,0,0,0.2);
+    width: 50%;
+    line-height: 40px;
+    font-size: 2em;
+    transition: all 0.2s ease;
+  }
+  label[for=plus] {
+    position: absolute;
+    left: 0px;
+    height: 40px;
+  }
+  label[for=minus] {
+    position: absolute;
+    right: 0px;
+  }
+  #plus:checked ~ .switch label[for=plus] {
+    background: green;
+  }
+   #minus:checked ~ .switch label[for=minus] {
+    background: red;
+  }
+  #minus:checked ~ .switch span {
+    background: #fff;
+    margin-left: -8px;
+  }
+
+  #plus:checked ~ .switch label[for=plus] {
+    color: #fff;
+  }
+  #minus:checked ~ .switch label[for=minus] {
+    color: #fff;
+  }
+
+#plus:checked ~ .switch span {
+  margin-left:-8px
+}
