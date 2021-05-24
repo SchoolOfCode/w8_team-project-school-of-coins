@@ -21,12 +21,15 @@ body{
     grid-row: 0;
 }
 
+#SOC-header{
+    color: #f6b93b;    
+}
+
 .username-avatar-container{
     grid-row: 4;
     grid-column: 2/8;
     text-align: center;
 
-}
 .username-avatar-container label{
     text-shadow: 3px 3px 5px #232f36;
 }
