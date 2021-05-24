@@ -1,21 +1,24 @@
 body{
+    display:grid;
+    grid-template-columns: repeat(8,12%);
+    grid-template-rows: repeat(autofill, minmax(100px, 1fr));
+    gap: 1em;
     background: rgb(27, 41, 41);
     color: rgb(255, 255, 255);
     font-family: 'Lucida Sans Unicode', Roboto, Verdana, sans-serif;
-    background-image: url("images/BlackJackWelcomeTrans.png");
-    background-repeat: no-repeat;
-    background-size:  cover;
-    background-position: top;
-}
-#game-container{
-    display:grid;
-    grid-template-columns: repeat(8,12.5%);
-    gap: 10px;
+    font-weight: 100;
 }
 .hidden{
     display: none;
 }
-
+button{
+    max-width: 100px;
+}
+h1{
+    grid-row: 1;
+    grid-column: 3/7;
+    text-align: center;
+}
 #pokerChips{
     grid-column: 1;
     grid-row: 0;
@@ -26,104 +29,82 @@ body{
 }
 
 .username-avatar-container{
-    grid-row: 4;
-    grid-column: 2/8;
+    grid-row: 5;
+    grid-column: 3/7;
     text-align: center;
-
-.username-avatar-container label{
-    text-shadow: 3px 3px 5px #232f36;
 }
 
 /*-------------Avatar-----------------*/
 #player-avatar{
-    width: 10em;
-    height: 10em;
-    display: grid;
-}
-#player-avatar img{
-    width: 10em;
-    height: 10em;
-    grid-row: 1;
-}
-#player-score{
-    grid-row: 2;
+    align-self: center;
     justify-self: center;
 }
-
 #computer-avatar{
-    display: grid;
-    width: 10em;
-    height: 10em;
-}
-#computer-avatar img{
-    width: 10em;
-    height: 10em;
-    grid-row: 1;
-}
-
-#computer-score{
-    grid-row: 2;
+    align-self: center;
     justify-self: center;
 }
-
-/*-------------Balances-----------------*/
-/* #game-outcome{
+/*-------------Scores,balances-----------------*/
+#game-outcome{
     display: none;
     grid-row: 4;
     grid-column: 4/8;
     justify-content: center;
     align-items: center;
-} */
-
+}
+#player-score{
+    grid-row: 4;
+    grid-column: 4/8;
+    justify-content: center;
+    align-items: flex-start;
+}
 #player-balance-container{
-    grid-row: 5;
-    grid-column: 3/7;
-    text-align: center;
-    padding-bottom: 10px;
+    grid-row: 4;
+    grid-column: 4/8;
+    justify-content: center;
+    align-items: flex-start;
 }
 #bet-display{
     color: white;
     z-index: 2;
     font-size: 2em;
     grid-row: 3;
-    grid-column: 3/7;
+    grid-column: 2/4;
     text-align: center;
     
 }
-/*-------------Cards & Scores--------------*/
+/*-------------Cards-----------------*/
 .playing-cards{
-    width: 10em;
-    height: 14em;
-    padding: 0 0.3em;
+    max-width: 300px;
 }
 #hidden-card{
-    width: 10em;
-    height: 14em;
-    padding: 0 0.3em;
+    max-height: 315px;
+    width: 226px;
 }
-
-#computer-cards-container{
-    grid-row: 2;
+#computer-cards{
+    grid-row: 2/3;
     grid-column: 2/8;
-    display: flex;
-    max-width: 80vw;
-    align-self: center;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 1em;
+    align-content: center;
+    justify-content: center;
+}
+#computer-score{
     justify-self: center;
 }
 
-#player-cards-container{
-    grid-row: 4;
+#player-cards{
+    grid-row: 3/4;
     grid-column: 2/8;
-    display: flex;
-    max-width: 80vw;
-    align-self: center;
-    justify-self: center;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 1em;
+    align-content: center;
+    justify-content: center;
 }
-
-
 /*-------------Player buttons-----------------*/
 .player-controls{
-    grid-row: 5;
+    grid-row: 4;
     grid-column: 3/7;
     justify-self: center;
     align-self: flex-end;
@@ -133,19 +114,18 @@ body{
 .pokerChips{
     display: none;
     grid-column: 1;
-    grid-row: 1/6;
-    justify-self: center;
-    align-self: center;
+    grid-row: 1/5;
 }
 
 #oneButton{
     font-size: 1.8em;
     text-align: center;
-}
 
+}
 #tenButton{
     font-size: 1.5em;
     text-align: center;
+
 }
 #hundredButton{
     font-size: 1em;
@@ -176,7 +156,7 @@ body{
     border-radius: 6em;
     padding-top: 6em/2 - 1em;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    margin: 0.5em 0;
+    margin: 2em auto;
 }
 #oneChip:hover{
     background-color: darkred;
@@ -202,7 +182,7 @@ body{
     border-radius: 6em;
     padding-top: 6em/2 - 1em;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    margin: 0.5em 0;
+    margin: 2em auto;
 }
 #tenChip:hover{
     background-color: darkblue;
@@ -228,7 +208,7 @@ body{
     border-radius: 6em;
     padding-top: 6em/2 - 1em;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    margin: 0.5em 0;
+    margin: 2em auto;
 }
 #hundredChip:hover{
     background-color: darkgreen;
@@ -254,7 +234,7 @@ body{
     border-radius: 6em;
     padding-top: 6em/2 - 1em;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    margin: 0.5em 0;
+    margin: 2em auto;
 }
 #thousandChip:hover{
     background-color: darkorange;
@@ -279,8 +259,9 @@ body{
     background: magenta;
     border: 10px dashed white;
     border-radius: 6em;
+    padding-top: 6em/2 - 1em;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    margin: 0.5em 0;
+    margin: 2em auto;
 }
 #tenThousandChip:hover{
     background-color: darkmagenta;
@@ -319,68 +300,4 @@ body{
     border-width: thick;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
-}
-
-/* Added css for the radio button*/
-.switch {
-    grid-column: 1;
-    position: absolute;
-    width: 80px;
-    height: 40px;
-    text-align: center;
-    background: #ddd;
-    transition: all 0.2s ease;
-    border-radius: 2px;
-  }
-  .switch span {
-    position: absolute;
-    width: 20px;
-    height: 4px;
-    top: 50%;
-    left: 50%;
-    background: #fff;
-    display: block;
-    transition: all 0.2s ease;
-  }
-
-  input[type=radio] {
-    display: none;
-  }
-  .switch label {
-    cursor: pointer;
-    color: rgba(0,0,0,0.2);
-    width: 50%;
-    line-height: 40px;
-    font-size: 2em;
-    transition: all 0.2s ease;
-  }
-  label[for=plus] {
-    position: absolute;
-    left: 0px;
-    height: 40px;
-  }
-  label[for=minus] {
-    position: absolute;
-    right: 0px;
-  }
-  #plus:checked ~ .switch label[for=plus] {
-    background: green;
-  }
-   #minus:checked ~ .switch label[for=minus] {
-    background: red;
-  }
-  #minus:checked ~ .switch span {
-    background: #fff;
-    margin-left: -8px;
-  }
-
-  #plus:checked ~ .switch label[for=plus] {
-    color: #fff;
-  }
-  #minus:checked ~ .switch label[for=minus] {
-    color: #fff;
-  }
-
-#plus:checked ~ .switch span {
-  margin-left:-8px
 }
