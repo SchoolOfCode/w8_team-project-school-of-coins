@@ -45,6 +45,8 @@ resetBtn.addEventListener("click", function(){
     resetBoard(blackjackPlayers.player("Dealer"),blackjackPlayers.player(username));
 });
 leaderBoardBtn.addEventListener("click", displayLeaderBoard);
+leaderBoardBtn.style.display = "none";
+
 submitUsernameBtn.addEventListener("click",loadProfile);
 
 //button original states
