@@ -35,6 +35,9 @@ const hundredChipBtn = document.querySelector("#hundredChip");
 const thousandChipBtn = document.querySelector("#thousandChip");
 const tenThousandChipBtn = document.querySelector("#tenThousandChip");
 
+// // BACKGROUND -------------------------------------------------------
+// this.style.backgroundImage: url('./images/SOCtable.png');
+
 // Event Handlers #######################################################
 
 startGameBtn.addEventListener("click", startGame);
@@ -396,7 +399,12 @@ async function startGame() {
   chipBlockDivElem.style.display = "block";
   betDisplayDivElem.classList.remove("hidden");
 
-  document.getElementById("SOCtable").style.visibility = "visible";
+  // Welcome Screen Logo-----------------------------------------
+  let welcomeLOGO = document.getElementById("welcome");
+  welcomeLOGO.classList.add("hidden");
+  // Displaying the SOC table --------------------------------------
+  let SOCtable = document.getElementById("SOCtable");
+  SOCtable.classList.remove("hidden");
 
   let user = blackjackPlayers.player(username);
   let computer = blackjackPlayers.player("Dealer");

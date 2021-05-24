@@ -1,9 +1,17 @@
 body {
   /* display: grid; */
-  grid-template-columns: repeat(8, 12%);
+  /* grid-template-columns: repeat(8, 12%);
   grid-template-rows: repeat(autofill, minmax(100px, 1fr));
-  gap: 1em;
-  background: rgb(27, 41, 41);
+  gap: 1em; */
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  /* background: rgb(27, 41, 41); */
+  background-image: url("./images/Carpet5.jpg");
+  background-size: 150px;
+  /* width: 300px; */
+  /* height: 300px; */
+  /* border: 2px solid; */
   color: rgb(255, 255, 255);
   font-family: "Lucida Sans Unicode", Roboto, Verdana, sans-serif;
   font-weight: 100;
