@@ -2,12 +2,8 @@
 const playerBalanceDisplay = document.querySelector("#player-balance-container");
 const playerCardElem = document.querySelector("#player-cards");
 const playerScoreDisplayElem = document.querySelector("#player-score");
-const playerAvatarElem =  document.querySelector("#player-avatar");
-
 const computerCardElem = document.querySelector("#computer-cards");
 const computerScoreDisplayElem = document.querySelector("#computer-score");
-const computerAvatarElem =  document.querySelector("#computer-avatar");
-
 const outcomeDisplayElem = document.querySelector("#game-outcome");
 const leaderBoardDisplayElem = document.querySelector("#leaderboard-display-container");
 const usernameAvatarContainerElem = document.querySelector(".username-avatar-container");
@@ -46,12 +42,24 @@ resetBtn.addEventListener("click", function(){
 });
 leaderBoardBtn.addEventListener("click", displayLeaderBoard);
 submitUsernameBtn.addEventListener("click",loadProfile);
-
 //button original states
 drawCardBtn.disabled = true;
 startGameBtn.disabled = false;
 standBtn.disabled = true;
+
+
+
+
+
+
+
 startGameBtn.classList.add("start-game-enabled");
+
+
+
+
+
+
 
 // Class Declerations #######################################################
 class Player {
@@ -121,7 +129,7 @@ class Player {
     Change the value of the appropriate user/computer element with the score
     #################################################################*/
         let parentDivElem = document.querySelector(`#${this.id}-score`);
-        parentDivElem.innerHTML = `<h2>Score: ${this.score}</h2>`;
+        parentDivElem.innerHTML = `<h2>${this.username}'s score is: ${this.score}</h2>`;
     }
     reset(){
     /*#################################################################
@@ -130,13 +138,12 @@ class Player {
         let parentImgDiv = document.querySelector(`#${this.id}-cards`);
         let parentScoreDiv = document.querySelector(`#${this.id}-score`);
         outcomeDisplayElem.innerHTML = "";
-        while (parentImgDiv.hasChildNodes()) {
+        while (parentImgDiv.childNodes.length > 1) {
             parentImgDiv.removeChild(parentImgDiv.lastChild);
         }
         parentScoreDiv.innerHTML="";
         this.hand = [];
         this.score = 0;
-        this.bet = 0;
         this.showHiddenCard = false;
         this.softHand=false;
         this.cardNum=0;
@@ -281,12 +288,29 @@ async function stand(computer,user){
     drawCardBtn.disabled = true;
     computer.showHiddenCard = true;
 
+
+
+
+
+
+
+
     standBtn.classList.remove("stand-enabled")
     standBtn.classList.add("disabled-buttons");
+
     drawCardBtn.classList.add("disabled-buttons");
     drawCardBtn.classList.remove("draw-card-enabled");
+
     resetBtn.classList.remove("disabled-buttons");
     resetBtn.classList.add("reset-enabled");
+
+
+
+
+
+
+
+
     
     await drawCard(computer);
     while (computer.score < 17 && computer.cardNum <6){
@@ -324,10 +348,24 @@ function resetBoard(computer,user){
     startGameBtn.disabled = false;
     standBtn.disabled = true;
 
-    resetBtn.classList.remove("reset-enabled");
-    resetBtn.classList.add("disabled-buttons");
-    startGameBtn.classList.add("start-game-enabled");
-    startGameBtn.classList.remove("disabled-buttons");
+
+
+
+
+
+
+
+    resetBtn.classList.remove("reset-enabled")
+    resetBtn.classList.add("disabled-buttons")
+
+    startGameBtn.classList.add("start-game-enabled")
+    startGameBtn.classList.remove("disabled-buttons")
+
+
+
+
+
+
 
     betAmountElem.innerText = 0;
     user.reset();
@@ -356,30 +394,15 @@ function displayLeaderBoard(){
 }
 
 function checkBet(value){
-    let betRadio = document.querySelectorAll('input[name="rdo"]');
     value = parseInt(value,10);
     let player = blackjackPlayers.player(username);
-    if (betRadio[0].checked){
-        for (let chip in pokerChips){
-            if (player.balance-value <= chip){
-                pokerChips[chip].disabled = true;
-            }
-        }
-        player.bet += value;
-        player.balance -= value;
-    }
-    if (betRadio[1].checked){
-        for (let chip in pokerChips){
-            if (player.bet-value >= 0){
-                pokerChips[chip].disabled = false;
-            }
-        }
-        if (player.bet-value >= 0){
-            player.bet -= value;
-            player.balance += value;
+    for (let chip in pokerChips){
+        if (player.balance-value <= chip){
+            pokerChips[chip].disabled = true;
         }
     }
-
+    player.balance -= value;
+    player.bet += value;
     document.querySelector("#current-balance").innerText = player.balance;
     betAmountElem.innerText = player.bet;
 }
@@ -402,20 +425,38 @@ async function startGame(){
     drawCardBtn.disabled = false;
     chipBlockDivElem.style.display="block";
     betDisplayDivElem.classList.remove("hidden");
-  
+    
+    
+
+
+
+
+
+
+
     drawCardBtn.classList.add("draw-card-enabled");
     drawCardBtn.classList.remove("disabled-button");
+
     resetBtn.classList.add("disabled-buttons");
     resetBtn.classList.remove("reset-enabled");
+    
     standBtn.classList.remove("disabled-buttons");
     standBtn.classList.add("stand-enabled");
-
-    document.querySelector("body").style.backgroundImage = 'url("images/SOCtable.png")';
-
-
     
     startGameBtn.classList.remove("start-game-enabled");
     startGameBtn.classList.add("disabled-buttons");
+    
+
+
+
+
+
+
+
+
+
+
+
     let user = blackjackPlayers.player(username);
     let computer = blackjackPlayers.player("Dealer");
 
@@ -424,7 +465,8 @@ async function startGame(){
         let computerProfileImgElem = document.createElement("img");
         computerProfileImgElem.src = computer.avatar;
         computerProfileImgElem.id = `${computer.id}-avatar`;
-        computerAvatarElem.appendChild(computerProfileImgElem);
+        computerProfileImgElem.class= "avatar-picture";
+        computerCardElem.appendChild(computerProfileImgElem);
     }
     drawCard(computer);
     drawCard(user);
@@ -448,7 +490,7 @@ const styleOptions = {
 }
 async function loadProfile(){
     /*#################################################################
-    Use this to load the profile, generate the avatar with the seed (name)
+    Use this to load the profile, generate the avatar with the seed
     Once the profile has been loaded, show the start game button
     Reset the game board on clicking load profile
     #################################################################*/
@@ -457,26 +499,26 @@ async function loadProfile(){
     let computer = blackjackPlayers.player("Dealer");
 
     playerBalanceDisplay.innerHTML="";
-    let prevAvatarImage = document.querySelector(".avatar-picture");
-    if (prevAvatarImage  !== null){
-        playerAvatarElem.removeChild(prevAvatarImage);
+    let prevAvatarImage = document.querySelector("#player-avatar");
+    if (prevAvatarImage !== null){
+        playerCardElem.removeChild(prevAvatarImage);
     }
 
     resetBoard(computer,user);
 
     customiseAvatarBtn.classList.remove("hidden");
-    usernameAvatarContainerElem.style.gridRow = "7";
+
     let profileImg = document.createElement("img");
     profileImg.src = await getAvatar(user.username);
-    profileImg.classList.add("avatar-picture");
+    profileImg.class = "avatar-picture";
     user.avatar = profileImg.src;
     if (user.avatar !== null){
-        profileImg.id = `${user.username}-avatar`;
-        playerAvatarElem.appendChild(profileImg);
+        profileImg.id = `${user.id}-avatar`;
+        playerCardElem.appendChild(profileImg);
     }
-    document.querySelector("body").style.backgroundImage = "none";
-    playerBalanceDisplay.innerHTML = `<p>Your balance is <span id='current-balance'>${user.balance}</span> credits</p>`;
-    startGameBtn.classList.remove("hidden");
+
+    playerBalanceDisplay.innerHTML = `<p>${user.username}'s balance is: <span id='current-balance'>${user.balance}</span></p>`;
+    startGameBtn.classList.remove("hidden"); //display the start button if the profile is loaded sucessfully
 }
 
 async function getAvatar(seed=username,width=200,height=200,backgroundColor="transparent", styleFurther=false){
