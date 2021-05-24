@@ -336,16 +336,22 @@ function displayLeaderBoard(){
     });
 }
 
-function checkBet(value){
+function checkBet(value,operation=true){
     value = parseInt(value,10);
     let player = blackjackPlayers.player(username);
-    for (let chip in pokerChips){
-        if (player.balance-value <= chip){
-            pokerChips[chip].disabled = true;
+    if (operation){
+        for (let chip in pokerChips){
+            if (player.balance-value <= chip){
+                pokerChips[chip].disabled = true;
+            }
         }
+        player.bet += value;
+        player.balance -= value;
+    } else{
+        player.bet -= value;
+        player.balance += value;
     }
-    player.balance -= value;
-    player.bet += value;
+
     document.querySelector("#current-balance").innerText = player.balance;
     betAmountElem.innerText = player.bet;
 }
@@ -368,6 +374,7 @@ async function startGame(){
     drawCardBtn.disabled = false;
     chipBlockDivElem.style.display="block";
     betDisplayDivElem.classList.remove("hidden");
+    document.querySelector("body").style.backgroundImage = 'url("images/SOCtable.png")';
 
     let user = blackjackPlayers.player(username);
     let computer = blackjackPlayers.player("Dealer");

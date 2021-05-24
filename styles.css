@@ -5,7 +5,7 @@ body{
     background-image: url("images/BlackJackWelcomeTrans.png");
     background-repeat: no-repeat;
     background-size:  cover;
-    background-position: center;
+    background-position: top;
 }
 #game-container{
     display:grid;
@@ -130,9 +130,9 @@ body{
 .pokerChips{
     display: none;
     grid-column: 1;
-    grid-row: 1/5;
+    grid-row: 1/6;
     justify-self: center;
-    align-self: flex-end;
+    align-self: center;
 }
 
 #oneButton{
@@ -173,7 +173,7 @@ body{
     border-radius: 6em;
     padding-top: 6em/2 - 1em;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    margin: 10px;
+    margin: 0.5em 0;
 }
 #oneChip:hover{
     background-color: darkred;
@@ -199,7 +199,7 @@ body{
     border-radius: 6em;
     padding-top: 6em/2 - 1em;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    margin: 10px;
+    margin: 0.5em 0;
 }
 #tenChip:hover{
     background-color: darkblue;
@@ -225,7 +225,7 @@ body{
     border-radius: 6em;
     padding-top: 6em/2 - 1em;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    margin: 10px;
+    margin: 0.5em 0;
 }
 #hundredChip:hover{
     background-color: darkgreen;
@@ -251,7 +251,7 @@ body{
     border-radius: 6em;
     padding-top: 6em/2 - 1em;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    margin: 10px;
+    margin: 0.5em 0;
 }
 #thousandChip:hover{
     background-color: darkorange;
@@ -277,7 +277,7 @@ body{
     border: 10px dashed white;
     border-radius: 6em;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    margin: 10px;
+    margin: 0.5em 0;
 }
 #tenThousandChip:hover{
     background-color: darkmagenta;
