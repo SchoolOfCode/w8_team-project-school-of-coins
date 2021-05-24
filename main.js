@@ -461,7 +461,6 @@ async function loadProfile(){
 
     resetBoard(computer,user);
 
-    customiseAvatarBtn.classList.remove("hidden");
     usernameAvatarContainerElem.style.gridRow = "7";
     let profileImg = document.createElement("img");
     profileImg.src = await getAvatar(user.username);
