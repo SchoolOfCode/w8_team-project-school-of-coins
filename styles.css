@@ -15,25 +15,22 @@ body{
 .hidden{
     display: none;
 }
-
+​
 #pokerChips{
     grid-column: 1;
     grid-row: 0;
 }
-
-#SOC-header{
-    color: #f6b93b;    
-}
-
+​
 .username-avatar-container{
     grid-row: 4;
     grid-column: 2/8;
     text-align: center;
-
+​
+}
 .username-avatar-container label{
     text-shadow: 3px 3px 5px #232f36;
 }
-
+​
 /*-------------Avatar-----------------*/
 #player-avatar{
     width: 10em;
@@ -49,7 +46,7 @@ body{
     grid-row: 2;
     justify-self: center;
 }
-
+​
 #computer-avatar{
     display: grid;
     width: 10em;
@@ -60,12 +57,12 @@ body{
     height: 10em;
     grid-row: 1;
 }
-
+​
 #computer-score{
     grid-row: 2;
     justify-self: center;
 }
-
+​
 /*-------------Balances-----------------*/
 /* #game-outcome{
     display: none;
@@ -74,7 +71,7 @@ body{
     justify-content: center;
     align-items: center;
 } */
-
+​
 #player-balance-container{
     grid-row: 5;
     grid-column: 3/7;
@@ -101,7 +98,7 @@ body{
     height: 14em;
     padding: 0 0.3em;
 }
-
+​
 #computer-cards-container{
     grid-row: 2;
     grid-column: 2/8;
@@ -110,7 +107,7 @@ body{
     align-self: center;
     justify-self: center;
 }
-
+​
 #player-cards-container{
     grid-row: 4;
     grid-column: 2/8;
@@ -119,8 +116,8 @@ body{
     align-self: center;
     justify-self: center;
 }
-
-
+​
+​
 /*-------------Player buttons-----------------*/
 .player-controls{
     grid-row: 5;
@@ -128,7 +125,7 @@ body{
     justify-self: center;
     align-self: flex-end;
 }
-
+​
 /* Adding the css for the chip */
 .pokerChips{
     display: none;
@@ -137,12 +134,12 @@ body{
     justify-self: center;
     align-self: center;
 }
-
+​
 #oneButton{
     font-size: 1.8em;
     text-align: center;
 }
-
+​
 #tenButton{
     font-size: 1.5em;
     text-align: center;
@@ -159,7 +156,7 @@ body{
     font-size: 0.8em;
     text-align: center;
 }
-
+​
 #oneChip{
     display: block;
     grid-row: 1;
@@ -186,7 +183,7 @@ body{
     box-shadow: 0 5px #666;
     transform: translateY(4px);
 }
-
+​
 #tenChip{
     display: block;
     width: 2.5em;
@@ -212,7 +209,7 @@ body{
     box-shadow: 0 5px #666;
     transform: translateY(4px);
 }
-
+​
 #hundredChip{
     display: block;
     width: 2.5em;
@@ -238,7 +235,7 @@ body{
     box-shadow: 0 5px #666;
     transform: translateY(4px);
 }
-
+​
 #thousandChip{
     display: block;
     width: 2.5em;
@@ -264,7 +261,7 @@ body{
     box-shadow: 0 5px #666;
     transform: translateY(4px);
 }
-
+​
 #tenThousandChip{
     display: block;
     width: 2.5em;
@@ -290,7 +287,7 @@ body{
     box-shadow: 0 5px #666;
     transform: translateY(4px);
 }
-
+​
 /*-------------Help Overlay-----------------*/
 #overlay{
     position: fixed; /*Sits on top of the page content*/
@@ -305,7 +302,7 @@ body{
     z-index: 2; /*Specify a stack order in case you're using a different order for other elements*/
     cursor: pointer; /*Add a pointer on the hover*/
 }
-
+​
 #helpText{
     position: absolute;
     top: 50%;
@@ -320,7 +317,7 @@ body{
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
 }
-
+​
 /* Added css for the radio button*/
 .switch {
     grid-column: 1;
@@ -342,7 +339,7 @@ body{
     display: block;
     transition: all 0.2s ease;
   }
-
+​
   input[type=radio] {
     display: none;
   }
@@ -373,14 +370,14 @@ body{
     background: #fff;
     margin-left: -8px;
   }
-
+​
   #plus:checked ~ .switch label[for=plus] {
     color: #fff;
   }
   #minus:checked ~ .switch label[for=minus] {
     color: #fff;
   }
-
+​
 #plus:checked ~ .switch span {
   margin-left:-8px
 }
