@@ -404,7 +404,7 @@ async function startGame(){
     standBtn.disabled = false;
     startGameBtn.disabled = true;
     drawCardBtn.disabled = false;
-    chipBlockDivElem.style.display="block";
+    chipBlockDivElem.style.display="flex";
     betDisplayDivElem.classList.remove("hidden");
     addBalanceContainer.classList.add("hidden");
 
