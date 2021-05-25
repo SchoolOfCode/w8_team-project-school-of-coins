@@ -2,10 +2,6 @@ body{
     background: rgb(27, 41, 41);
     color: rgb(255, 255, 255);
     font-family: 'Lucida Sans Unicode', Roboto, Verdana, sans-serif;
-    /* background-image: url("images/BlackJackWelcomeTrans.png");
-    background-repeat: no-repeat;
-    background-size:  100%;
-    background-position: top; */
 }
 #game-container{
     display:grid;
@@ -27,13 +23,14 @@ body{
     margin: 1em;
 
 }
-.username-avatar-container label{
-    text-shadow: 3px 3px 5px #232f36;
+.username-avatar-container:hover label{
+    text-shadow: 1px 1px 20px #e8f0c3;
 }
 #add-balance-container{
     grid-row: 6;
     grid-column: 3/7;
     justify-self: center;
+
 }
 
 #add-balance-value{
@@ -47,6 +44,7 @@ body{
 #add-balance-label{
     color: #f6b93b;
     text-transform: uppercase;
+    text-align: center;
 }
 h1{
     color: #f6b93b;
@@ -90,44 +88,34 @@ h1{
 }
 /*-------------Avatar-----------------*/
 #player-avatar{
-    width: 10em;
-    height: 10em;
     display: grid;
 }
 #player-avatar img{
-    width: 10em;
-    height: 10em;
+    width: calc(50px + 7vw);
     grid-row: 1;
 }
 #player-score{
     grid-row: 2;
     justify-self: center;
+    font-size: calc(7px + .5vw);
 }
 
 #computer-avatar{
     display: grid;
-    width: 10em;
-    height: 10em;
+
 }
 #computer-avatar img{
-    width: 10em;
-    height: 10em;
+    width: calc(50px + 7vw);
     grid-row: 1;
 }
 
 #computer-score{
     grid-row: 2;
     justify-self: center;
+    font-size: calc(7px + .5vw);
 }
 
 /*-------------Balances-----------------*/
-/* #game-outcome{
-    display: none;
-    grid-row: 4;
-    grid-column: 4/8;
-    justify-content: center;
-    align-items: center;
-} */
 
 #player-balance-container{
     grid-row: 5;
@@ -138,21 +126,20 @@ h1{
 #bet-display{
     color: white;
     z-index: 2;
-    font-size: 2em;
+    height: 1em;
+    font-size: calc(10px + 0.5vw);
     grid-row: 3;
     grid-column: 3/7;
-    text-align: center;
-    
+    justify-self: center;
+    align-self: center;    
 }
 /*-------------Cards & Scores--------------*/
 .playing-cards{
-    width: 10em;
-    height: 14em;
+    width: calc(50px + 7vw);
     padding: 0 0.3em;
 }
 #hidden-card{
-    width: 10em;
-    height: 14em;
+    width: calc(50px + 7vw);
     padding: 0 0.3em;
 }
 
@@ -177,14 +164,12 @@ h1{
 
 /*-------------Player buttons-----------------*/
 #help-button{
-    display:unset;
     position: fixed;
     margin: 1em;
     top: 0;
     right:0;
 }
 .player-controls{
-    display:unset;
     position: fixed;
     margin: auto;
     bottom: 0;
@@ -201,38 +186,36 @@ h1{
     justify-self: center;
     align-self: center;
     flex-direction: column;
+    margin-left: calc(50px + 0.5vw);
 }
 
 
 
 #oneButton{
-    font-size: 1.8em;
+    font-size: calc(20px + 5vw);
     text-align: center;
 }
-
 #tenButton{
-    font-size: 1.5em;
+    font-size: calc(20px + 4vw);
     text-align: center;
 }
 #hundredButton{
-    font-size: 1em;
+    font-size: calc(16px + 2vw);
     text-align: center;
 }
 #thousandButton{
-    font-size: 1.2em;
+    font-size: calc(16px + 3vw);
     text-align: center;
 }
 #tenThousandButton{
-    font-size: 0.8em;
+    font-size: calc(16px + 1.5vw);
     text-align: center;
 }
 
 #oneChip{
     display: block;
-    grid-row: 1;
-    width: 2.5em;
-    height: 2.5em;
-    font-size: 2.5em;
+    width: calc(50px + 5vw);
+    height: calc(50px + 5vw);
     font-weight: 700;
     text-transform: uppercase;
     text-align: center;
@@ -241,7 +224,6 @@ h1{
     background: red;
     border: 10px dashed white;
     border-radius: 6em;
-    padding-top: 6em/2 - 1em;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
     margin: 10px 0;
 }
@@ -256,9 +238,8 @@ h1{
 
 #tenChip{
     display: block;
-    width: 2.5em;
-    height: 2.5em;
-    font-size: 2.5em;
+    width: calc(50px + 5vw);
+    height: calc(50px + 5vw);
     font-weight: 700;
     text-transform: uppercase;
     text-align:justify;
@@ -282,9 +263,8 @@ h1{
 
 #hundredChip{
     display: block;
-    width: 2.5em;
-    height: 2.5em;
-    font-size: 2.5em;
+    width: calc(50px + 5vw);
+    height: calc(50px + 5vw);
     font-weight: 700;
     text-transform: uppercase;
     text-align: center;
@@ -308,9 +288,8 @@ h1{
 
 #thousandChip{
     display: block;
-    width: 2.5em;
-    height: 2.5em;
-    font-size: 2.5em;
+    width: calc(50px + 5vw);
+    height: calc(50px + 5vw);
     font-weight: 700;
     text-transform: uppercase;
     text-align: center;
@@ -334,9 +313,8 @@ h1{
 
 #tenThousandChip{
     display: block;
-    width: 2.5em;
-    height: 2.5em;
-    font-size: 2.5em;
+    width: calc(50px + 5vw);
+    height: calc(50px + 5vw);
     font-weight: 700;
     letter-spacing: .1em;
     text-transform: uppercase;
