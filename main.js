@@ -243,6 +243,8 @@ async function drawCard(playerObj){
     #################################################################*/
     if (playerObj.score >= 21 && playerObj.softHand == false){
         drawCardBtn.disabled = true;
+        drawCardBtn.classList.add("disabled-buttons");
+        drawCardBtn.classList.remove("draw-card-enabled");
         return;
     }
     const response = await fetch(`https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=1`,{
