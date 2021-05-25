@@ -7,7 +7,8 @@ body{
     color: rgb(255, 255, 255);
     font-family: 'Lucida Sans Unicode', Roboto, Verdana, sans-serif;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 80% 85%;
+    background-position: center top;
     height: 100vh;
 }
 #game-container{

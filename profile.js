@@ -25,6 +25,9 @@ async function loadProfile(){
     usernameAvatarContainerElem.classList.remove("username-avatar-container");
     usernameAvatarContainerElem.classList.add("username-avatar-container-game");
     document.querySelector("#splash-image").style.display = "none";
+    // if (document.documentElement.clientWidth > 600){
+    //     document.querySelector("body").style.backgroundImage ="url('images/SOCtable.png')";
+    // }
     playerBalanceDisplay.innerHTML="";
     let prevAvatarImage = document.querySelector(".avatar-picture");
     if (prevAvatarImage  !== null){
