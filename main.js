@@ -29,6 +29,8 @@ const usernameInputElement = document.querySelector("#username");
 const addBalance = document.querySelector("#add-balance-value");
 const addToBalanceBtn = document.querySelector("#add-balance-btn");
 
+const winningImage = document.querySelector("#winning-image");
+
 //Poker Chip Buttons & Event Handlers ###################################
 const oneChipBtn = document.querySelector("#oneChip");
 const tenChipBtn = document.querySelector("#tenChip");
@@ -309,21 +311,30 @@ async function stand(computer,user){
     // See https://en.wikipedia.org/wiki/Blackjack#Rules
     if (user.softHand && user.cardNum === 2 && user.score ===21){
         //win - blackjack
+        document.querySelector("body").style.backgroundImage = "url('images/rain-money.gif')";
+        setTimeout(function(){document.querySelector("body").style.backgroundImage = ""; }, 4000);
         user.balance += user.bet + user.bet*1.5;
     } else if(user.score > 21){
         //loss
+
         user.balance = user.balance;
     } else if (computer.score > 21 && user.score <= 21){
         //win
+        document.querySelector("body").style.backgroundImage = "url('images/rain-money.gif')";
+        setTimeout(function(){document.querySelector("body").style.backgroundImage = ""; }, 4000);
         user.balance += user.bet * 2;
     } else if(user.score > computer.score && user.score <= 21){
         //win
+        document.querySelector("body").style.backgroundImage = "url('images/rain-money.gif')";
+        setTimeout(function(){document.querySelector("body").style.backgroundImage = ""; }, 4000);
         user.balance += user.bet * 2;
     } else if (computer.score > user.score){
         //loss
+
         user.balance = user.balance;
     } else {
         //draw
+
         user.balance += user.bet
     }
     document.querySelector("#current-balance").innerText = user.balance;
@@ -513,3 +524,4 @@ function addToBalance(){
     user.balance += parseInt(addBalance.value,10);
     document.querySelector("#current-balance").innerText = user.balance;
 }
+
