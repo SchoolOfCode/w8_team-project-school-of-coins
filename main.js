@@ -329,6 +329,7 @@ function resetBoard(computer,user){
     drawCardBtn.disabled = true;
     startGameBtn.disabled = false;
     standBtn.disabled = true;
+    resetBtn.disabled = true;
     resetBtn.classList.remove("reset-enabled")
     resetBtn.classList.add("disabled-buttons")
     startGameBtn.classList.add("start-game-enabled")
