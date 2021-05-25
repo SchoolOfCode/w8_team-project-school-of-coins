@@ -241,6 +241,10 @@ async function drawCard(playerObj){
     so if we get a HTTP 500 return value, try again to a maximum of 5 times
     TODO: Implement a way to notify the user to try refreshing the page
     #################################################################*/
+    if (playerObj.score >= 21 && playerObj.softHand == false){
+        drawCardBtn.disabled = true;
+        return;
+    }
     const response = await fetch(`https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=1`,{
         method: 'GET', headers: {'Content-Type': 'application/json'}});
     if (response.status !== 200) {
