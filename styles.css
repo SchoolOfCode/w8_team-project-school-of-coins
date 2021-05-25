@@ -2,10 +2,10 @@ body{
     background: rgb(27, 41, 41);
     color: rgb(255, 255, 255);
     font-family: 'Lucida Sans Unicode', Roboto, Verdana, sans-serif;
-    background-image: url("images/BlackJackWelcomeTrans.png");
+    /* background-image: url("images/BlackJackWelcomeTrans.png");
     background-repeat: no-repeat;
     background-size:  100%;
-    background-position: top;
+    background-position: top; */
 }
 #game-container{
     display:grid;
@@ -23,12 +23,38 @@ body{
 
 .username-avatar-container{
     grid-row: 1;
-    grid-column: 1/4;
+    grid-column: 1/6;
     margin: 1em;
 
 }
 .username-avatar-container label{
     text-shadow: 3px 3px 5px #232f36;
+}
+#add-balance-container{
+    grid-row: 6;
+    grid-column: 3/7;
+    justify-self: center;
+}
+
+#add-balance-value{
+    color: #f6b93b;
+    border: 4px solid #f6b93b;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgba(0,0,0,0.3);
+}
+
+#add-balance-label{
+    color: #f6b93b;
+    text-transform: uppercase;
+}
+h1{
+    color: #f6b93b;
+    grid-row: 3;
+    grid-column: 3/7;
+    justify-self: center;
+    text-align: center;
+    text-shadow: 5px 5px 100px #e5c78a;
 }
 
 /*-------------Avatar-----------------*/

@@ -13,7 +13,8 @@ const leaderBoardDisplayElem = document.querySelector("#leaderboard-display-cont
 const usernameAvatarContainerElem = document.querySelector(".username-avatar-container");
 const chipBlockDivElem = document.querySelector(".pokerChips");
 const betAmountElem = document.querySelector("#bet-amount");
-const betDisplayDivElem = document.querySelector("#bet-display")
+const betDisplayDivElem = document.querySelector("#bet-display");
+const addBalanceContainer = document.querySelector("#add-balance-container");
 
 const customiseAvatarBtn = document.querySelector("#customise-avatar");
 const submitUsernameBtn = document.querySelector("#submit-username");
@@ -25,6 +26,8 @@ const leaderBoardBtn = document.querySelector("#leaderboard");
 const helpBtn = document.querySelector("#help-button");
 
 const usernameInputElement = document.querySelector("#username");
+const addBalance = document.querySelector("#add-balance-value");
+const addToBalanceBtn = document.querySelector("#add-balance-btn");
 
 //Poker Chip Buttons & Event Handlers ###################################
 const oneChipBtn = document.querySelector("#oneChip");
@@ -46,8 +49,8 @@ resetBtn.addEventListener("click", function(){
 });
 leaderBoardBtn.addEventListener("click", displayLeaderBoard);
 leaderBoardBtn.style.display = "none";
-
 submitUsernameBtn.addEventListener("click",loadProfile);
+addToBalanceBtn.addEventListener("click",addToBalance);
 
 //button original states
 drawCardBtn.disabled = true;
@@ -396,14 +399,14 @@ async function startGame(){
         await getDecks();
     }
     playingButtons.forEach(btn => btn.classList.remove("hidden"));
-    customiseAvatarBtn.classList.add("hidden");
+
     helpBtn.classList.remove("hidden");
     standBtn.disabled = false;
     startGameBtn.disabled = true;
     drawCardBtn.disabled = false;
     chipBlockDivElem.style.display="block";
     betDisplayDivElem.classList.remove("hidden");
-    document.querySelector("body").style.backgroundImage = 'url("images/SOCtable.png")';
+    addBalanceContainer.classList.add("hidden");
 
     drawCardBtn.classList.add("draw-card-enabled");
     drawCardBtn.classList.remove("disabled-button");
@@ -453,7 +456,7 @@ async function loadProfile(){
     username = usernameInputElement.value;
     let user = blackjackPlayers.loadPlayer(username);
     let computer = blackjackPlayers.player("Dealer");
-
+    document.querySelector("#welcome").style.display = "none";
     playerBalanceDisplay.innerHTML="";
     let prevAvatarImage = document.querySelector(".avatar-picture");
     if (prevAvatarImage  !== null){
@@ -461,7 +464,7 @@ async function loadProfile(){
     }
 
     resetBoard(computer,user);
-
+    addBalanceContainer.classList.remove("hidden");
     let profileImg = document.createElement("img");
     profileImg.src = await getAvatar(user.username);
     profileImg.classList.add("avatar-picture");
@@ -470,8 +473,8 @@ async function loadProfile(){
         profileImg.id = `${user.username}-avatar`;
         playerAvatarElem.appendChild(profileImg);
     }
-    document.querySelector("body").style.backgroundImage = "none";
-    playerBalanceDisplay.innerHTML = `<p>Your balance is <span id='current-balance'>${user.balance}</span> credits</p>`;
+
+    playerBalanceDisplay.innerHTML = `<p>Balance: <span id='current-balance'>${user.balance}</span> Credits</p>`;
     startGameBtn.classList.remove("hidden");
 }
 
@@ -490,4 +493,11 @@ function overlayOn(){
 
 function overlayOff(){
     document.getElementById("overlay").style.display = "none";
+}
+
+//add to the balance
+function addToBalance(){
+    let user = blackjackPlayers.loadPlayer(username);
+    user.balance += parseInt(addBalance.value,10);
+    document.querySelector("#current-balance").innerText = user.balance;
 }

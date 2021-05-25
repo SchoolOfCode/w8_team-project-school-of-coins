@@ -9,16 +9,16 @@
     <title>SOC Blackjack</title>
 </head>
 <body>
-    <h1 aria-label="School of Coins: Blackjack" class="hidden">School of Coins: Blackjack</h1>
     <div id="game-container">
+        <h1 aria-label="School of Coins: Blackjack" id="welcome">Welcome to the School of Coins Blackjack Game</h1>
         <div class = "username-avatar-container">
             <form onsubmit="return false">
                 <label id="username-label" for="username">Username:</label>
                 <input type="text" id="username" maxlength="20" aria-label="username input" value="Jack" autofocus>
                 <button id="submit-username">Load Profile</button>
-                <button id="customise-avatar" class="hidden">Customise</button>
             </form>
         </div>
+
         <!--class for the chips-->
         <div class="pokerChips">
             <button id="oneChip" value="1" onclick="checkBet(this.value)"><span id="oneButton">1</span></button>
@@ -51,6 +51,13 @@
         </div>
         <!--Current player balance-->
         <div id="player-balance-container"></div>
+        <div id="add-balance-container" class="hidden">
+            <form onsubmit="return false">
+                <label id="add-balance-label" for="add-balance">Credits:</label>
+                <input type="number" id="add-balance-value" size="7" aria-label="add to your balance" value="1000">
+                <button id="add-balance-btn">ADD</button>
+            </form>
+        </div>
         <div id="game-outcome"></div>
         <!--Game control buttons-->
         <div class="player-controls">
@@ -79,6 +86,6 @@
             </div>
         </div>
     </div>
-<script src="main.js"></script>   
+    <script src="main.js"></script>   
 </body>
 </html>
