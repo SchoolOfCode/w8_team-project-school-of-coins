@@ -32,13 +32,21 @@ h1{
     font-size: calc(1em + 5vw);
     margin-top: calc(1em + 5vh);
 }
+#splash-image{
+    display: block;
+    position:relative;
+    margin: auto;
+    width: calc(340px + 20vw);
+    overflow: hidden;
+}
 
 /*-------------Username input-----------------*/
 
 .username-avatar-container{
-    grid-row: 6;
-    grid-column: 2/8;
-    justify-self: center;
+    position: fixed;
+    bottom: 30vh;
+    width: 100%;
+    text-align: center;
 }
 .username-avatar-container-game{
     grid-row: 1;
@@ -51,7 +59,7 @@ h1{
     border-radius: 10px;
     padding: 10px calc(5px + 0.1vw);
     text-transform: uppercase;
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(187, 187, 187, 0.1);
     margin-bottom: 10px;
 }
 #username::placeholder{
@@ -93,7 +101,7 @@ h1{
     border-radius: 10px;
     padding: 10px calc(5px + 0.1vw);
     width: calc(90px + 5vw);
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(187, 187, 187, 0.1);
 }
 
 #add-balance-label{
