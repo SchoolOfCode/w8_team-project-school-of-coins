@@ -32,6 +32,9 @@ const helpBtn = document.querySelector("#help-button");
 
 const usernameInputElement = document.querySelector("#username");
 
+// ------------------------------------------------------------------
+const gameMenu = document.querySelector(".gameMenu");
+
 //Poker Chip Buttons & Event Handlers ###################################
 const oneChipBtn = document.querySelector("#oneChip");
 const tenChipBtn = document.querySelector("#tenChip");
@@ -40,6 +43,7 @@ const thousandChipBtn = document.querySelector("#thousandChip");
 const tenThousandChipBtn = document.querySelector("#tenThousandChip");
 
 // Event Handlers #######################################################
+
 startGameBtn.addEventListener("click", startGame);
 drawCardBtn.addEventListener("click", function () {
   drawCard(blackjackPlayers.player(username));
@@ -63,7 +67,7 @@ drawCardBtn.disabled = true;
 startGameBtn.disabled = false;
 standBtn.disabled = true;
 
-startGameBtn.classList.add("start-game-enabled");
+startGameBtn.classList.add("start-game-enabled"); //------------------------------------------------------------------------
 
 // Class Declerations #######################################################
 class Player {
@@ -218,7 +222,7 @@ blackjackPlayers.player("Jack").balance = 1234;
 blackjackPlayers.loadPlayer("Lewis");
 blackjackPlayers.player("Lewis").balance = 5678;
 blackjackPlayers.loadPlayer("Emilio");
-blackjackPlayers.player("Emilio").balance = 999999;
+blackjackPlayers.player("Emilio").balance = 0;
 
 // Global Variables #######################################################
 const TEMP_BET = 1000;
@@ -422,6 +426,17 @@ async function startGame() {
     for the user. Once the user clicks start game, the other game buttons are revealed, 
     and the cusomise button is removed. Load profile remains to allow switching.
     #################################################################*/
+
+  gameMenu.classList.remove("hidden");
+  playerBalanceDisplay.classList.add("hidden");
+  const welcomeImage = document.getElementById("welcome");
+  welcomeImage.classList.add("hidden");
+
+  const SOCtable = document.getElementById("SOCtable");
+  SOCtable.classList.remove("hidden");
+  // document.querySelector("body").style.backgroundImage =
+  //   'url("images/SOCtable.png")';
+
   if (remainingCardsInDeck <= 15) {
     await getDecks();
   }
@@ -433,8 +448,6 @@ async function startGame() {
   drawCardBtn.disabled = false;
   chipBlockDivElem.style.display = "block";
   betDisplayDivElem.classList.remove("hidden");
-  document.querySelector("body").style.backgroundImage =
-    'url("images/SOCtable.png")';
 
   drawCardBtn.classList.add("draw-card-enabled");
   drawCardBtn.classList.remove("disabled-button");
@@ -499,6 +512,8 @@ async function loadProfile() {
     Once the profile has been loaded, show the start game button
     Reset the game board on clicking load profile
     #################################################################*/
+  usernameAvatarContainerElem.classList.add("hidden");
+
   username = usernameInputElement.value;
   let user = blackjackPlayers.loadPlayer(username);
   let computer = blackjackPlayers.player("Dealer");
@@ -520,7 +535,7 @@ async function loadProfile() {
     playerAvatarElem.appendChild(profileImg);
   }
   document.querySelector("body").style.backgroundImage = "none";
-  playerBalanceDisplay.innerHTML = `<p>Your balance is <span id='current-balance'>${user.balance}</span> credits</p>`;
+  playerBalanceDisplay.innerHTML = `<p>Hello ${username}! Your balance is <span id='current-balance'>${user.balance}</span> credits. You are broke as fuck!</p>`;
   startGameBtn.classList.remove("hidden");
 }
 

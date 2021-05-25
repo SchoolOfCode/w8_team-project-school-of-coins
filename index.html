@@ -9,25 +9,46 @@
     <title>SOC Blackjack</title>
   </head>
   <body>
-    <h1 aria-label="School of Coins: Blackjack" class="hidden">
-      School of Coins: Blackjack
-    </h1>
+    <header>
+      <h1 aria-label="School of Coins: Blackjack" class="hidden">
+        School of Coins: Blackjack
+      </h1>
+      <img
+        src="./images/SOCWelcomeSMALL.png"
+        alt="SOC Welcome screen"
+        id="welcome"
+      />
+      <img
+        src="./images/SOCtable.png"
+        alt="SOC table"
+        id="SOCtable"
+        class="hidden"
+      />
+    </header>
     <div id="game-container">
       <div class="username-avatar-container">
         <form onsubmit="return false">
-          <label id="username-label" for="username">Username:</label>
+          <label id="username-label" for="username"></label>
           <input
             type="text"
             id="username"
             maxlength="20"
-            aria-label="username input"
+            aria-label="username
+          input"
             value="Jack"
+            placeholder="UserName"
             autofocus
           />
           <button id="submit-username">Load Profile</button>
           <button id="customise-avatar" class="hidden">Customise</button>
         </form>
       </div>
+      <div class="gameMenu">
+        <button id="start-game" class="hidden">Start Game</button>
+        <button id="reset" class="hidden">New Game</button>
+        <button id="leaderboard" class="hidden">Leaderboard</button>
+      </div>
+
       <!--class for the chips-->
       <div class="pokerChips">
         <button id="oneChip" value="1" onclick="checkBet(this.value)">
@@ -84,10 +105,9 @@
         <button id="stand" class="hidden">Stand</button>
         <button id="reset" class="hidden">New Game</button>
         <button id="leaderboard" class="hidden">Leaderboard</button>
+        <button id="help-button" onclick="overlayOn()">Help?</button>
       </div>
-      <button id="help-button" class="hidden" onclick="overlayOn()">
-        Help
-      </button>
+
       <div id="leaderboard-display-container"></div>
       <!--Created the overlay and added text inside of the overlay for the instructions -->
       <div id="overlay" onclick="overlayOff()">

@@ -1,146 +1,146 @@
 /*---------Disable Buttons Styling---------*/
 
 .disabled-buttons {
-    color: #8f691e;
-    text-transform: uppercase;
-    text-decoration: none;
-    background-color: rgba(0,0,0,0.3);
-    padding: 20px;
-    border: 4px solid #8f691e;
-    border-radius: 10px;
-    transition: all 0.4s ease 0s;
-
+  color: #8f691e;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border: 4px solid #8f691e;
+  border-radius: 10px;
+  transition: all 0.4s ease 0s;
 }
 
 /*---------Draw Card/ HIT Styling---------*/
 
 .draw-card-enabled {
-    color: #f6b93b;
-    text-transform: uppercase;
-    text-decoration: none;
-    background-color: rgba(0,0,0,0.3);
-    padding: 20px;
-    border: 4px solid #f6b93b;
-    border-radius: 10px;
-    transition: all 0.4s ease 0s;
-    cursor: pointer;
+  color: #f6b93b;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border: 4px solid #f6b93b;
+  border-radius: 10px;
+  transition: all 0.4s ease 0s;
+  cursor: pointer;
 }
 
 .draw-card-enabled:hover {
-	color: #ffffff;
-	background: #f6b93b;
-	border-color: #f6b93b;
-    border-radius: 10px;
-	transition: all 0.4s ease 0s;
+  color: #ffffff;
+  background: #f6b93b;
+  border-color: #f6b93b;
+  border-radius: 10px;
+  transition: all 0.4s ease 0s;
 }
 
 /*---------Stand Styling---------*/
 
 .stand-enabled {
-    color: #f6b93b;
-    text-transform: uppercase;
-    text-decoration: none;
-    background-color: rgba(0,0,0,0.3);
-    padding: 20px;
-    border: 4px solid #f6b93b;
-    border-radius: 10px;
-    transition: all 0.4s ease 0s;
-    cursor: pointer;
+  color: #f6b93b;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border: 4px solid #f6b93b;
+  border-radius: 10px;
+  transition: all 0.4s ease 0s;
+  cursor: pointer;
 }
 
 .stand-enabled:hover {
-	color: #ffffff;
-	background: #f6b93b;
-	border-color: #f6b93b;
-    border-radius: 10px;
-	transition: all 0.4s ease 0s;
+  color: #ffffff;
+  background: #f6b93b;
+  border-color: #f6b93b;
+  border-radius: 10px;
+  transition: all 0.4s ease 0s;
 }
 
 /*---------Reset Button Styling---------*/
 
 .reset-enabled {
-    color: #f6b93b;
-    text-transform: uppercase;
-    text-decoration: none;
-    background-color: rgba(0,0,0,0.3);
-    padding: 20px;
-    border: 4px solid #f6b93b;
-    border-radius: 10px;
-    transition: all 0.4s ease 0s;
-    cursor: pointer;
+  color: #f6b93b;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border: 4px solid #f6b93b;
+  border-radius: 10px;
+  transition: all 0.4s ease 0s;
+  cursor: pointer;
 }
 
 .reset-enabled:hover {
-	color: #ffffff;
-	background: #f6b93b;
-	border-color: #f6b93b;
-    border-radius: 10px;
-	transition: all 0.4s ease 0s;
+  color: #ffffff;
+  background: #f6b93b;
+  border-color: #f6b93b;
+  border-radius: 10px;
+  transition: all 0.4s ease 0s;
 }
 
 /*---------Leaderboard Button Styling---------*/
 
 #leaderboard {
-    color: #f6b93b;
-    text-transform: uppercase;
-    min-width: 150px;
-    text-decoration: none;
-    background-color: rgba(0,0,0,0.3);
-    padding: 20px;
-    border: 4px solid #f6b93b;
-    border-radius: 10px;
-    transition: all 0.4s ease 0s;
-    cursor: pointer;
+  color: #f6b93b;
+  text-transform: uppercase;
+  min-width: 150px;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border: 4px solid #f6b93b;
+  border-radius: 10px;
+  transition: all 0.4s ease 0s;
+  cursor: pointer;
 }
 
 #leaderboard:hover {
-	color: white;
-	background: #f6b93b;
-	border-color: #f6b93b;
-    border-radius: 10px;
-	transition: all 0.4s ease 0s;
+  color: white;
+  background: #f6b93b;
+  border-color: #f6b93b;
+  border-radius: 10px;
+  transition: all 0.4s ease 0s;
 }
 
 /*---------Start Game Button Styling---------*/
 
 .start-game-enabled {
-    color: #f6b93b;
-    text-transform: uppercase;
-    text-decoration: none;
-    background-color: rgba(0,0,0,0.3);
-    padding: 20px;
-    border: 4px solid #f6b93b;
-    border-radius: 10px;
-    transition: all 0.4s ease 0s;
-    cursor: pointer;
+  color: #f6b93b;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border: 4px solid #f6b93b;
+  border-radius: 10px;
+  transition: all 0.4s ease 0s;
+  cursor: pointer;
 }
 
 .start-game-enabled:hover {
-	color: #ffffff;
-	background: #f6b93b;
-	border-color: #f6b93b;
-    border-radius: 10px;
-	transition: all 0.4s ease 0s;
+  color: #ffffff;
+  background: #f6b93b;
+  border-color: #f6b93b;
+  border-radius: 10px;
+  transition: all 0.4s ease 0s;
 }
 
 /*---------Help Button Styling---------*/
 
 #help-button {
-    color: #f6b93b;
-    text-transform: uppercase;
-    text-decoration: none;
-    background-color: rgba(0,0,0,0.3);
-    padding: 20px;
-    border: 4px solid #f6b93b;
-    border-radius: 10px;
-    transition: all 0.4s ease 0s;
-    cursor: pointer;
+  color: #f6b93b;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  border: 4px solid #f6b93b;
+  border-radius: 10px;
+  transition: all 0.4s ease 0s;
+  cursor: pointer;
+  font-size: 20px;
 }
 
 #help-button:hover {
-	color: #ffffff;
-	background: #f6b93b;
-	border-color: #f6b93b;
-    border-radius: 10px;
-	transition: all 0.4s ease 0s;
+  color: #ffffff;
+  background: #f6b93b;
+  border-color: #f6b93b;
+  border-radius: 10px;
+  transition: all 0.4s ease 0s;
 }
