@@ -479,7 +479,7 @@ async function loadProfile(){
     let computer = blackjackPlayers.player("Dealer");
     usernameAvatarContainerElem.classList.remove("username-avatar-container");
     usernameAvatarContainerElem.classList.add("username-avatar-container-game");
-    document.querySelector("#welcome").style.display = "none";
+    document.querySelector("#splash-image").style.display = "none";
     playerBalanceDisplay.innerHTML="";
     let prevAvatarImage = document.querySelector(".avatar-picture");
     if (prevAvatarImage  !== null){
