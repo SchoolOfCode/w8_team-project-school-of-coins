@@ -1,0 +1,212 @@
+
+#pokerChips{
+    grid-column: 1;
+    grid-row: 0;
+}
+/*-------------Poker Chips-----------------*/
+.pokerChips{
+    display: none;
+    grid-column: 1;
+    grid-row: 2/6;
+    justify-self: center;
+    align-self: center;
+    flex-direction: column;
+}
+
+#oneButton{
+    font-size: calc(16px + 4.5vw);
+    text-align: center;
+}
+#tenButton{
+    font-size: calc(12px + 4vw);
+    text-align: center;
+}
+#hundredButton{
+    font-size: calc(14px + 2.4vw);
+    text-align: center;
+}
+#thousandButton{
+    font-size: calc(15px + 3vw);
+    text-align: center;
+}
+#tenThousandButton{
+    font-size: calc(10px + 2.3vw);
+    text-align: center;
+}
+
+#oneChip{
+    display: block;
+    width: calc(40px + 5vw);
+    height: calc(40px + 5vw);
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background: red;
+    border: 10px dashed white;
+    border-radius: 6em;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    margin: 10px 0;
+}
+#oneChip:hover{
+    background-color: darkred;
+}
+#oneChip:active{
+    background-color: darkred;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+#tenChip{
+    display: block;
+    width: calc(40px + 5vw);
+    height: calc(40px + 5vw);
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align:justify;
+    text-decoration: none;
+    color: white;
+    background: blue;
+    border: 10px dashed white;
+    border-radius: 6em;
+    padding-top: 6em/2 - 1em;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    margin: 10px 0;
+}
+#tenChip:hover{
+    background-color: darkblue;
+}
+#tenChip:active{
+    background-color: darkblue;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+#hundredChip{
+    display: block;
+    width: calc(40px + 5vw);
+    height: calc(40px + 5vw);
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background: green;
+    border: 10px dashed white;
+    border-radius: 6em;
+    padding-top: 6em/2 - 1em;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    margin: 10px 0;
+}
+#hundredChip:hover{
+    background-color: darkgreen;
+}
+#hundredChip:active{
+    background-color: darkgreen;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+#thousandChip{
+    display: block;
+    width: calc(40px + 5vw);
+    height: calc(40px + 5vw);
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background: orange;
+    border: 10px dashed white;
+    border-radius: 6em;
+    padding-top: 6em/2 - 1em;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    margin: 10px 0;
+}
+#thousandChip:hover{
+    background-color: darkorange;
+}
+#thousandChip:active{
+    background-color: darkorange;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+#tenThousandChip{
+    display: block;
+    width: calc(40px + 5vw);
+    height: calc(40px + 5vw);
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background: magenta;
+    border: 10px dashed white;
+    border-radius: 6em;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    margin: 10px 0;
+}
+#tenThousandChip:hover{
+    background-color: darkmagenta;
+}
+#tenThousandChip:active{
+    background-color: darkmagenta;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+
+/* Toggle radio button*/
+.toggle-radio{
+    display: inherit;
+    margin: 10px 0;
+    align-content: flex-end;
+    justify-content: center;
+}
+.switch {
+    grid-column: 1;
+    position: absolute;
+    width: calc(50px + 5vw);
+    height: 40px;
+    text-align: center;
+    background: rgba(182, 182, 182,0.3);
+    transition: all 0.2s ease;
+    border-radius: 2px;
+}
+
+input[type=radio] {
+    display: none;
+}
+.switch label {
+cursor: pointer;
+color: rgba(0,0,0,0.2);
+width: 50%;
+line-height: 40px;
+font-size: 2em;
+transition: all 0.2s ease;
+}
+label[for=plus] {
+position: absolute;
+left: 0px;
+height: 40px;
+}
+label[for=minus] {
+position: absolute;
+right: 0px;
+}
+#plus:checked ~ .switch label[for=plus] {
+background: rgba(0,0,0,0.5);;
+}
+#minus:checked ~ .switch label[for=minus] {
+background: rgba(0,0,0,0.5);
+}
+
+#plus:checked ~ .switch label[for=plus] {
+color: #f6b93b;;
+}
+#minus:checked ~ .switch label[for=minus] {
+color: #f6b93b;;
+}

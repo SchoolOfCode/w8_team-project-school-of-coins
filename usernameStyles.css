@@ -1,0 +1,53 @@
+/*-------------Username input-----------------*/
+
+.username-avatar-container{
+    position: fixed;
+    bottom: 30vh;
+    width: 100%;
+    text-align: center;
+}
+.username-avatar-container-game{
+    grid-row: 1;
+    grid-column: 1/8;
+    margin: 1em;
+}
+#username{
+    color: #f6b93b;
+    border: 4px solid #f6b93b;
+    border-radius: 10px;
+    padding: 10px calc(5px + 0.1vw);
+    text-transform: uppercase;
+    background-color: rgba(187, 187, 187, 0.1);
+    margin-bottom: 10px;
+}
+#username::placeholder{
+    color: #f6b93b;
+}
+/* #username-label{
+    display: none;
+    color: #f6b93b;
+    text-transform: uppercase;
+} */
+
+#add-balance-container{
+    grid-row: 6;
+    grid-column: 3/7;
+    justify-self: center;
+    text-align: center;
+}
+
+#add-balance-value{
+    color: #f6b93b;
+    border: 4px solid #f6b93b;
+    border-radius: 10px;
+    padding: 10px calc(5px + 0.1vw);
+    width: calc(90px + 5vw);
+    background-color: rgba(187, 187, 187, 0.1);
+}
+
+#add-balance-label{
+    color: #f6b93b;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: calc(1em + 0.5vw);
+}
