@@ -1,22 +1,22 @@
-*{
-    margin: 0;
-    padding:0;
+* {
+  margin: 0;
+  padding: 0;
 }
-body{
-    background: rgb(27, 41, 41);
-    color: rgb(255, 255, 255);
-    font-family: 'Lucida Sans Unicode', Roboto, Verdana, sans-serif;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
+body {
+  background: rgb(27, 41, 41);
+  color: rgb(255, 255, 255);
+  font-family: "Lucida Sans Unicode", Roboto, Verdana, sans-serif;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
-#game-container{
-    display:grid;
-    grid-template-columns: repeat(8,1fr);
-    gap: 10px;
+#game-container {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px;
 }
-.hidden{
-    display: none;
+.hidden {
+  display: none;
 }
 
 /* h1{
@@ -28,83 +28,82 @@ body{
     font-size: calc(1em + 5vw);
     margin-top: calc(1em + 5vh);
 } */
-#splash-image{
-    display: block;
-    position:relative;
-    margin: auto;
-    width: calc(340px + 20vw);
-    overflow: hidden;
+#splash-image {
+  display: block;
+  position: relative;
+  margin: auto;
+  width: calc(340px + 20vw);
+  overflow: hidden;
 }
 
 /*-------------Avatar-----------------*/
-#player-avatar{
-    display: grid;
+#player-avatar {
+  display: grid;
 }
-#player-avatar img{
-    width: calc(50px + 7vw);
-    grid-row: 1;
+#player-avatar img {
+  width: calc(50px + 7vw);
+  grid-row: 1;
 }
-#player-score{
-    grid-row: 2;
-    justify-self: center;
-    font-size: calc(7px + .5vw);
+#player-score {
+  grid-row: 2;
+  justify-self: center;
+  font-size: calc(7px + 0.5vw);
 }
-#computer-avatar{
-    display: grid;
+#computer-avatar {
+  display: grid;
 }
-#computer-avatar img{
-    width: calc(50px + 7vw);
-    grid-row: 1;
+#computer-avatar img {
+  width: calc(50px + 7vw);
+  grid-row: 1;
 }
-#computer-score{
-    grid-row: 2;
-    justify-self: center;
-    font-size: calc(7px + .5vw);
+#computer-score {
+  grid-row: 2;
+  justify-self: center;
+  font-size: calc(7px + 0.5vw);
 }
 
 /*-------------Balances-----------------*/
 
-#player-balance-container{
-    grid-row: 5;
-    grid-column: 3/7;
-    text-align: center;
-    padding-bottom: 10px;
+#player-balance-container {
+  grid-row: 5;
+  grid-column: 3/7;
+  text-align: center;
+  padding-bottom: 10px;
 }
-#bet-display{
-    color: white;
-    z-index: 2;
-    height: 1em;
-    font-size: calc(10px + 0.5vw);
-    grid-row: 3;
-    grid-column: 3/7;
-    justify-self: center;
-    align-self: center;    
+#bet-display {
+  color: white;
+  z-index: 2;
+  height: 1em;
+  font-size: calc(10px + 0.5vw);
+  grid-row: 3;
+  grid-column: 3/7;
+  justify-self: center;
+  align-self: center;
 }
 /*-------------Cards & Scores--------------*/
-.playing-cards{
-    width: calc(50px + 7vw);
-    padding: 0 0.3em;
+.playing-cards {
+  width: calc(50px + 7vw);
+  padding: 0 0.3em;
 }
-#hidden-card{
-    width: calc(50px + 7vw);
-    padding: 0 0.3em;
-}
-
-#computer-cards-container{
-    grid-row: 2;
-    grid-column: 2/8;
-    display: flex;
-    max-width: 80vw;
-    align-self: center;
-    justify-self: center;
+#hidden-card {
+  width: calc(50px + 7vw);
+  padding: 0 0.3em;
 }
 
-#player-cards-container{
-    grid-row: 4;
-    grid-column: 2/8;
-    display: flex;
-    max-width: 80vw;
-    align-self: center;
-    justify-self: center;
+#computer-cards-container {
+  grid-row: 2;
+  grid-column: 2/8;
+  display: flex;
+  max-width: 80vw;
+  align-self: center;
+  justify-self: center;
 }
 
+#player-cards-container {
+  grid-row: 4;
+  grid-column: 2/8;
+  display: flex;
+  max-width: 80vw;
+  align-self: center;
+  justify-self: center;
+}
