@@ -1,8 +1,8 @@
 /*-------------Username input-----------------*/
 
 .username-avatar-container{
-    position: fixed;
-    bottom: 30vh;
+    position: absolute;
+    bottom: 0;
     width: 100%;
     text-align: center;
 }
