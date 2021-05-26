@@ -63,6 +63,7 @@ body{
     grid-column: 2/8;
     grid-row: 1/6;
     width:80vw;
+    max-height: 80vh;
     z-index: -5;
 }
 
