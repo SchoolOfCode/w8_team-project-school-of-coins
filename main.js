@@ -1,4 +1,7 @@
 // DOM Selectors #######################################################
+
+const gameContainer = document.querySelector("#game-container");
+
 const playerBalanceDisplay = document.querySelector("#player-balance-container");
 const playerCardElem = document.querySelector("#player-cards");
 const playerScoreDisplayElem = document.querySelector("#player-score");
@@ -30,6 +33,8 @@ const addBalance = document.querySelector("#add-balance-value");
 const addToBalanceBtn = document.querySelector("#add-balance-btn");
 
 const winningImage = document.querySelector("#winning-image");
+const outcomeOverlayWin = document.querySelector("#outcome-overlay-win");
+const outcomeOverlayLoss = document.querySelector("#outcome-overlay-loss");
 
 //Poker Chip Buttons & Event Handlers ###################################
 const oneChipBtn = document.querySelector("#oneChip");

@@ -2,7 +2,7 @@
 
 .username-avatar-container{
     position: absolute;
-    bottom: 0;
+    top: 90vh;
     width: 100%;
     text-align: center;
 }

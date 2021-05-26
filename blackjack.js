@@ -86,26 +86,30 @@ async function stand(computer,user){
     // See https://en.wikipedia.org/wiki/Blackjack#Rules
     if (user.softHand && user.cardNum === 2 && user.score ===21){
         //win - blackjack
-        document.querySelector("body").style.backgroundImage = "url('images/rain-money.gif')";
-        setTimeout(function(){document.querySelector("body").style.backgroundImage = ""; }, 4000);
+        // document.querySelector("body").style.backgroundImage = "url('images/rain-money.gif')";
+        // setTimeout(function(){document.querySelector("body").style.backgroundImage = ""; }, 4000);
+        outcomeOverlayWin.classList.remove("hidden");
+        setTimeout(function(){outcomeOverlayWin.classList.add("hidden");; }, 500);
         user.balance += user.bet + user.bet*1.5;
     } else if(user.score > 21){
         //loss
-
+        outcomeOverlayLoss.classList.remove("hidden");
+        setTimeout(function(){outcomeOverlayLoss.classList.add("hidden");; }, 500);
         user.balance = user.balance;
     } else if (computer.score > 21 && user.score <= 21){
         //win
-        document.querySelector("body").style.backgroundImage = "url('images/rain-money.gif')";
-        setTimeout(function(){document.querySelector("body").style.backgroundImage = ""; }, 4000);
+        outcomeOverlayWin.classList.remove("hidden");
+        setTimeout(function(){outcomeOverlayWin.classList.add("hidden");; }, 500);
         user.balance += user.bet * 2;
     } else if(user.score > computer.score && user.score <= 21){
         //win
-        document.querySelector("body").style.backgroundImage = "url('images/rain-money.gif')";
-        setTimeout(function(){document.querySelector("body").style.backgroundImage = ""; }, 4000);
+        outcomeOverlayWin.classList.remove("hidden");
+        setTimeout(function(){outcomeOverlayWin.classList.add("hidden");; }, 500);
         user.balance += user.bet * 2;
     } else if (computer.score > user.score){
         //loss
-
+        outcomeOverlayLoss.classList.remove("hidden");
+        setTimeout(function(){outcomeOverlayLoss.classList.add("hidden");; }, 500);
         user.balance = user.balance;
     } else {
         //draw
@@ -113,7 +117,6 @@ async function stand(computer,user){
         user.balance += user.bet
     }
     document.querySelector("#current-balance").innerText = user.balance;
-    console.log(blackjackPlayers);
 }
 
 function resetBoard(computer,user){
@@ -196,6 +199,9 @@ async function startGame(){
     }
     playingButtons.forEach(btn => btn.classList.remove("hidden"));
 
+    // if (window.innerWidth > 1000){
+    //     document.querySelector("#table-bg").classList.remove("hidden");
+    // }
     helpBtn.classList.remove("hidden");
     standBtn.disabled = false;
     startGameBtn.disabled = true;

@@ -39,9 +39,10 @@ async function loadProfile(){
     let profileImg = document.createElement("img");
     profileImg.src = await getAvatar(user.username);
     profileImg.classList.add("avatar-picture");
+    profileImg.id = `${user.username}-avatar`;
     user.avatar = profileImg.src;
     if (user.avatar !== null){
-        profileImg.id = `${user.username}-avatar`;
+        
         playerAvatarElem.appendChild(profileImg);
     }
 

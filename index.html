@@ -12,13 +12,16 @@
     <title>SOC Blackjack</title>
 </head>
 <body>
-    <img src = "images/SOClogo7.png" id="splash-image">
+    <img src = "images/SOClogo7.png" id="splash-image" alt="Welcome to the School of Code Blackjack Game Image">
+    <div id="outcome-overlay-win" class="hidden"></div>
+    <div id="outcome-overlay-loss" class="hidden"></div>
     <div id="game-container">
-        <h1 aria-label="School of Coins: Blackjack" id="welcome"></h1>
+        <img src = "images/poker_table_2.png" id="table-bg" class="hidden">
+        <h1 aria-label="School of Code: Blackjack" id="welcome"></h1>
         <div class = "username-avatar-container">
             <form onsubmit="return false">
                 <label id="username-label" for="username"></label>
-                <input type="text" id="username" maxlength="20" size="10" aria-label="username input" placeholder="username" autofocus>
+                <input type="text" id="username" maxlength="20" aria-label="username input" placeholder="username" autofocus>
                 <button id="submit-username">Load Profile</button>
             </form>
         </div>
