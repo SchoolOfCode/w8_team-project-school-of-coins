@@ -21,8 +21,9 @@ body{
     z-index:10;
     top:0; 
     left:0; 
-    position:fixed; 
+    position:fixed;
 }
+
 #outcome-overlay-loss{
     opacity:0.7;
     filter: alpha(opacity=20);

@@ -89,27 +89,27 @@ async function stand(computer,user){
         // document.querySelector("body").style.backgroundImage = "url('images/rain-money.gif')";
         // setTimeout(function(){document.querySelector("body").style.backgroundImage = ""; }, 4000);
         outcomeOverlayWin.classList.remove("hidden");
-        setTimeout(function(){outcomeOverlayWin.classList.add("hidden");; }, 500);
+        setTimeout(function(){outcomeOverlayWin.classList.add("hidden");; }, 750);
         user.balance += user.bet + user.bet*1.5;
     } else if(user.score > 21){
         //loss
         outcomeOverlayLoss.classList.remove("hidden");
-        setTimeout(function(){outcomeOverlayLoss.classList.add("hidden");; }, 500);
+        setTimeout(function(){outcomeOverlayLoss.classList.add("hidden");; }, 750);
         user.balance = user.balance;
     } else if (computer.score > 21 && user.score <= 21){
         //win
         outcomeOverlayWin.classList.remove("hidden");
-        setTimeout(function(){outcomeOverlayWin.classList.add("hidden");; }, 500);
+        setTimeout(function(){outcomeOverlayWin.classList.add("hidden");; }, 750);
         user.balance += user.bet * 2;
     } else if(user.score > computer.score && user.score <= 21){
         //win
         outcomeOverlayWin.classList.remove("hidden");
-        setTimeout(function(){outcomeOverlayWin.classList.add("hidden");; }, 500);
+        setTimeout(function(){outcomeOverlayWin.classList.add("hidden");; }, 750);
         user.balance += user.bet * 2;
     } else if (computer.score > user.score){
         //loss
         outcomeOverlayLoss.classList.remove("hidden");
-        setTimeout(function(){outcomeOverlayLoss.classList.add("hidden");; }, 500);
+        setTimeout(function(){outcomeOverlayLoss.classList.add("hidden");; }, 750);
         user.balance = user.balance;
     } else {
         //draw
@@ -240,4 +240,3 @@ function addToBalance(){
     user.balance += parseInt(addBalance.value,10);
     document.querySelector("#current-balance").innerText = user.balance;
 }
-
