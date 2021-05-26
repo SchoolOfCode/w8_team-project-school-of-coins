@@ -202,6 +202,9 @@ async function startGame(){
     // if (window.innerWidth > 1000){
     //     document.querySelector("#table-bg").classList.remove("hidden");
     // }
+    if (window.innerWidth > 1000){
+        document.querySelector("#table-bg").classList.remove("hidden");
+    }
     helpBtn.classList.remove("hidden");
     standBtn.disabled = false;
     startGameBtn.disabled = true;
