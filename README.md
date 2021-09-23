@@ -2,7 +2,7 @@
   School of Coins - Blackjack
 </h1>
 
-## https://jolly-knuth-9528ed.netlify.app/ ##
+## https://goofy-hawking-eaa54f.netlify.app/ ##
 
 
 ## Overview ##
